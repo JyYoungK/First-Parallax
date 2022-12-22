@@ -5,6 +5,7 @@ module.exports = {
   theme: {
     extend: {
       zIndex: {
+        91: "91",
         5000: "5000",
       },
       colors: {

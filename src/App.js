@@ -4,13 +4,14 @@ import DotGroup from "./scenes/DotGroup";
 import MySkills from "./scenes/MySkills";
 import LineGradient from "./components/LineGradient";
 import Projects from "./scenes/Projects";
+import Projects2 from "./scenes/projects2";
 import Contact from "./scenes/Contact";
 import Footer from "./scenes/Footer";
 import useMediaQuery from "./hooks/useMediaQuery";
 import { useEffect, useState } from "react";
 import Testimonials from "./scenes/Testimonials";
 import { motion } from "framer-motion";
-
+import Birds from "./assets/birds.png";
 function App() {
   const [selectedPage, setSelectedPage] = useState("home");
   const [isTopOfPage, setIsTopOfPage] = useState(true);
@@ -23,8 +24,22 @@ function App() {
     };
   }, []);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY === 0) {
+        setIsTopOfPage(true);
+        setSelectedPage("home");
+      }
+      if (window.scrollY !== 0) setIsTopOfPage(false);
+    };
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const handleScroll = () => {
     const s = window.scrollY;
+    console.log(s);
     const w = window.outerWidth;
     const h = document.getElementsByClassName("paralax")[0].clientWidth;
     const h_b =
@@ -41,7 +56,7 @@ function App() {
     const z_7 = 1 + w * 0.0000005 * p_b;
     const z_8 = 1 + w * 0.00000001 * p_b;
     const z_9 = 1 + w * 0.00000005 * p_b;
-    const z_10 = 1 + (w / 5000000) * p; //scale slowest
+    const z_10 = 1 + (w / 50000000) * p; //scale slowest
     const hr = (w / 1500) * p_b; //scale fastest
     const hr_2 = (w / 15000) * p_b;
     const hr_3 = (w / 1500000) * p_b;
@@ -50,9 +65,9 @@ function App() {
       "moon"
     )[0].style = `transform: scale(${z_10})`;
 
-    // document.getElementsByClassName(
-    //   "fog"
-    // )[0].style = `transform: scale(${z_1});opacity: ${opas}`;
+    document.getElementsByClassName(
+      "fog"
+    )[0].style = `transform: scale(${z_1});opacity: ${opas}`;
 
     //forest starts scaling, others don't
     document.getElementsByClassName(
@@ -87,23 +102,7 @@ function App() {
         "deer"
       )[0].style = `transform: translate3d(${hr_3}px,0,0) scale(${z_9})`;
     }
-
-    // document.getElementsByClassName(
-    //   "deer"
-    // )[0].style = `transform: translate3d(${hr_3}px,0,0) scale(${z_forest})`;
   };
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY === 0) {
-        setIsTopOfPage(true);
-        setSelectedPage("home");
-      }
-      if (window.scrollY !== 0) setIsTopOfPage(false);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   return (
     <div className="paralax">
@@ -114,24 +113,28 @@ function App() {
             setSelectedPage={setSelectedPage}
           />
         )}
+        <motion.div
+          margin="0 0 -200px 0"
+          amount="all"
+          onViewportEnter={() => setSelectedPage("home")}
+        >
+          <Landing setSelectedPage={setSelectedPage} />
+        </motion.div>
       </div>
-      {/* <div className="fixed w-full h-full top-0 left-0 fog"></div> */}
+      <div className="fixed w-full h-full top-0 left-0 fog"></div>
       <div className="fixed w-full h-full top-0 left-0 moon"></div>
       {/* ----------- First Content Title/Forest Page -----------  */}
       <div className="fixed w-full h-full top-0 left-0 forest"></div>
-      <motion.div
-        margin="0 0 -200px 0"
-        amount="all"
-        onViewportEnter={() => setSelectedPage("home")}
+
+      <div
+        className={`forest_container ${
+          window.scrollY > 300 ? "z-5000" : "z-91"
+        }`}
       >
-        <Landing setSelectedPage={setSelectedPage} />
-      </motion.div>
-      <div className="forest_container">
-        <div className="forest-header">
+        <div className="forest-header hover:filter hover:saturate-200 transition duration-500">
           <h1> Junyoung Kang</h1>
-          <h2> Frontend Developer/Web Designer</h2>
+          <h2> Frontend Developer / Web Designer</h2>
         </div>
-        <div className="content"></div>
       </div>
 
       {/* ----------- Second Content /Temple Page ----------- */}
@@ -153,7 +156,8 @@ function App() {
             amount="all"
             onViewportEnter={() => setSelectedPage("projects")}
           >
-            <Projects />
+            <Projects2 />
+            {/* <Projects /> */}
           </motion.div>
         </div>
         <LineGradient />

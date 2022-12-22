@@ -27,7 +27,7 @@ body,
 
 @keyframes moves {
   to {
-    background-position: -100vw 110%;
+    background-position: -100vw 0%;
   }
 }
 
@@ -55,7 +55,7 @@ body,
 }
 
 .deer {
-  background: url("./assets/cool3.jpg") bottom/100% no-repeat;
+  background: url("./assets/cool3.png") bottom/100% no-repeat;
   background-size: cover;
   background-position: center;
   z-index: 80;
@@ -63,7 +63,6 @@ body,
 
 .forest_container {
   position: relative;
-  z-index: 91;
   max-width: 1140px;
   margin: 0 auto;
   margin-top: 100vh;
@@ -74,6 +73,19 @@ body,
   color: white;
   text-align: center !important;
   text-transform: uppercase;
+  animation-name: glow;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0px 0px 5px #fff, 0px 0px 5px #d3a34a;
+  }
+  to {
+    text-shadow: 0px 0px 20px #fff, 0px 0px 20px #e7e080;
+  }
 }
 
 .forest-header h1 {
@@ -109,4 +121,29 @@ body,
   max-width: 1140px;
   margin: 0 auto;
   margin-top: 500vh;
+}
+
+.sliding_project {
+  height: 100vh;
+  width: 100vw;
+  background-color: black;
+  margin: 0rem;
+  overflow: hidden;
+}
+
+.image-track {
+  display: flex;
+  gap: 4vmin;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(0%, -50%);
+  user-select: none; /* -- Prevent image highlighting -- */
+}
+
+.image-track > .image {
+  width: 40vmin;
+  height: 56vmin;
+  object-fit: cover;
+  object-position: 100% center;
 }
