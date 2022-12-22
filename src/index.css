@@ -19,62 +19,67 @@ body,
   position: absolute;
 }
 
-.p-item1 {
+.fog {
+  background: url("./assets/fog.webp") bottom/100% repeat-x;
+  opacity: 0.3;
+  animation: moves 20s infinite linear;
+  z-index: 1000;
+}
+
+@keyframes moves {
+  to {
+    background-position: -100vw 110%;
+  }
+}
+
+.moon {
   background: url("./assets/m_1.png") center/cover no-repeat;
 }
 
-.p-item3 {
+.forest {
   background: url("./assets/cool.png") bottom/100% no-repeat;
   background-size: cover;
   background-position: center;
-  z-index: 2;
+  z-index: 100;
 }
 
-.p-item4 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  content: "";
-  background: url("./assets/fog_2.png") repeat-x;
-  background-size: contain;
+.temple {
+  background: url("./assets/cool2.png") bottom/100% no-repeat;
+  background-size: cover;
   background-position: center;
-  animation: marquee 20s linear infinite;
+  z-index: 90;
 }
 
-@keyframes marquee {
-  0% {
-    transform: translate3d(0, 0, 0);
-  }
-  100% {
-    transform: translate3d(-200vw, 0, 0);
-  }
+.deer {
+  background: url("./assets/cool3.jpg") bottom/100% no-repeat;
+  background-size: cover;
+  background-position: center;
+  z-index: 80;
 }
 
-.container {
+.forest_container {
   position: relative;
-  z-index: 1;
+  z-index: 91;
   max-width: 1140px;
   margin: 0 auto;
   margin-top: 100vh;
 }
 
-.content-header {
+.forest-header {
   font-family: sans-serif;
   color: white;
   text-align: center !important;
   text-transform: uppercase;
 }
 
-.content-header h1 {
+.forest-header h1 {
   font-size: 120px;
   font-weight: 600;
   color: white;
   margin-bottom: -40px;
 }
 
-.content-header h2 {
+.forest-header h2 {
   font-size: 40px;
   font-weight: 600;
   color: white;
@@ -84,4 +89,20 @@ body,
   width: 200px;
   height: auto;
   margin-right: 40px;
+}
+
+.temple_container {
+  position: relative;
+  z-index: 91;
+  max-width: 1140px;
+  margin: 0 auto;
+  margin-top: 1500vh;
+}
+
+.deer_container {
+  position: relative;
+  z-index: 91;
+  max-width: 1140px;
+  margin: 0 auto;
+  margin-top: 1000vh;
 }
