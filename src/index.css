@@ -6,8 +6,7 @@
 
 html,
 body,
-#root,
-.app {
+#root {
   /* height: 100%;
   background-color: #010026;
   @apply text-white; */
@@ -16,7 +15,7 @@ body,
 
 .paralax {
   height: 100%;
-  position: absolute;
+  /* position: absolute; */
 }
 
 .fog {
@@ -30,6 +29,11 @@ body,
   to {
     background-position: -100vw 110%;
   }
+}
+
+.dot_container {
+  position: fixed;
+  z-index: 5000;
 }
 
 .moon {
@@ -104,5 +108,5 @@ body,
   z-index: 91;
   max-width: 1140px;
   margin: 0 auto;
-  margin-top: 1000vh;
+  margin-top: 500vh;
 }

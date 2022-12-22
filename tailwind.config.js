@@ -4,6 +4,9 @@ module.exports = {
   mode: "jit",
   theme: {
     extend: {
+      zIndex: {
+        5000: "5000",
+      },
       colors: {
         "deep-blue": "#010026",
         blue: "#2CBCE9",

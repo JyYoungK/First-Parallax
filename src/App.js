@@ -40,10 +40,11 @@ function App() {
     const z_6 = 1 + w * 0.000001 * p_b;
     const z_7 = 1 + w * 0.0000005 * p_b;
     const z_8 = 1 + w * 0.00000001 * p_b;
-    const z_9 = 1 + w * 0.000005 * p_b;
+    const z_9 = 1 + w * 0.00000005 * p_b;
     const z_10 = 1 + (w / 5000000) * p; //scale slowest
     const hr = (w / 1500) * p_b; //scale fastest
     const hr_2 = (w / 15000) * p_b;
+    const hr_3 = (w / 1500000) * p_b;
 
     document.getElementsByClassName(
       "moon"
@@ -54,15 +55,17 @@ function App() {
     // )[0].style = `transform: scale(${z_1});opacity: ${opas}`;
 
     //forest starts scaling, others don't
-    console.log(z_forest);
+    document.getElementsByClassName(
+      "forest"
+    )[0].style = `transform: translate3d(${hr}px,0,0) scale(${z_forest})`;
 
     if (z_forest <= 4) {
       document.getElementsByClassName(
-        "forest"
-      )[0].style = `transform: translate3d(${hr}px,0,0) scale(${z_forest})`;
-      document.getElementsByClassName(
         "temple"
       )[0].style = `transform: translate3d(${hr_2}px,0,0) scale(${z_7})`;
+      document.getElementsByClassName(
+        "deer"
+      )[0].style = `transform: translate3d(${hr_3}px,0,0) scale(${z_8})`;
     }
 
     if (z_forest <= 15 && z_forest > 4) {
@@ -70,6 +73,9 @@ function App() {
       document.getElementsByClassName(
         "temple"
       )[0].style = `transform: translate3d(${hr_2}px,0,0) scale(${z_6})`;
+      document.getElementsByClassName(
+        "deer"
+      )[0].style = `transform: translate3d(${hr_3}px,0,0) scale(${z_8})`;
     }
 
     if (z_forest > 15) {
@@ -77,6 +83,9 @@ function App() {
       document.getElementsByClassName(
         "temple"
       )[0].style = `transform: translate3d(${hr_2}px,0,0) scale(${z_4})`;
+      document.getElementsByClassName(
+        "deer"
+      )[0].style = `transform: translate3d(${hr_3}px,0,0) scale(${z_9})`;
     }
 
     // document.getElementsByClassName(
@@ -97,115 +106,83 @@ function App() {
   }, []);
 
   return (
-    <div>
-      <div className="paralax">
-        {/* <div className="fixed w-full h-full top-0 left-0 fog"></div> */}
-        <div className="fixed w-full h-full top-0 left-0 moon"></div>
-        {/* ----------- First Content Title/Forest Page -----------  */}
-        <div className="fixed w-full h-full top-0 left-0 forest"></div>
-        <div className="forest_container">
-          <div className="forest-header">
-            <h1> Junyoung Kang</h1>
-            <h2> Frontend Developer/Web Designer</h2>
-          </div>
-          <div className="content"></div>
-        </div>
-
-        {/* ----------- Second Content /Temple Page ----------- */}
-        <div className="fixed w-full h-full top-0 left-0 temple"></div>
-        <div className="temple_container">
-          <div className="w-5/6 mx-auto md:h-full ">
-            <motion.div
-              margin="0 0 -200px 0"
-              amount="all"
-              onViewportEnter={() => setSelectedPage("skills")}
-            >
-              <MySkills />
-            </motion.div>
-          </div>
-          <LineGradient />
-          <div className="w-5/6 mx-auto">
-            <motion.div
-              margin="0 0 -200px 0"
-              amount="all"
-              onViewportEnter={() => setSelectedPage("projects")}
-            >
-              <Projects />
-            </motion.div>
-          </div>
-          <LineGradient />
-          <div className="w-5/6 mx-auto md:h-full">
-            <motion.div
-              margin="0 0 -200px 0"
-              amount="all"
-              onViewportEnter={() => setSelectedPage("testimonials")}
-            >
-              <Testimonials />
-            </motion.div>
-          </div>
-        </div>
-
-        {/* ----------- Third Content /Deer Page ----------- */}
-        <div className="fixed w-full h-full top-0 left-0 deer"></div>
-        <div className="deer_container">
-          <div className="w-5/6 mx-auto md:h-full ">
-            <motion.div
-              margin="0 0 -200px 0"
-              amount="all"
-              onViewportEnter={() => setSelectedPage("skills")}
-            >
-              <MySkills />
-            </motion.div>
-          </div>
-          <LineGradient />
-          <div className="w-5/6 mx-auto">
-            <motion.div
-              margin="0 0 -200px 0"
-              amount="all"
-              onViewportEnter={() => setSelectedPage("projects")}
-            >
-              <Projects />
-            </motion.div>
-          </div>
-          <LineGradient />
-          <div className="w-5/6 mx-auto md:h-full">
-            <motion.div
-              margin="0 0 -200px 0"
-              amount="all"
-              onViewportEnter={() => setSelectedPage("testimonials")}
-            >
-              <Testimonials />
-            </motion.div>
-          </div>
-          {/* <div className="w-5/6 mx-auto md:h-full">
-            <motion.div
-              margin="0 0 -200px 0"
-              amount="all"
-              onViewportEnter={() => setSelectedPage("contact")}
-            >
-              <Contact />
-            </motion.div>
-          </div>
-          <Footer /> */}
-        </div>
-        {/* End */}
-      </div>
-
-      {/* <div className="w-5/6 mx-auto md:h-full">
+    <div className="paralax">
+      <div className="w-5/6 mx-auto md:h-full">
         {isDesktop && (
           <DotGroup
             selectedPage={selectedPage}
             setSelectedPage={setSelectedPage}
           />
         )}
-        <motion.div
-          margin="0 0 -200px 0"
-          amount="all"
-          onViewportEnter={() => setSelectedPage("home")}
-        >
-          <Landing setSelectedPage={setSelectedPage} />
-        </motion.div>
-      </div> */}
+      </div>
+      {/* <div className="fixed w-full h-full top-0 left-0 fog"></div> */}
+      <div className="fixed w-full h-full top-0 left-0 moon"></div>
+      {/* ----------- First Content Title/Forest Page -----------  */}
+      <div className="fixed w-full h-full top-0 left-0 forest"></div>
+      <motion.div
+        margin="0 0 -200px 0"
+        amount="all"
+        onViewportEnter={() => setSelectedPage("home")}
+      >
+        <Landing setSelectedPage={setSelectedPage} />
+      </motion.div>
+      <div className="forest_container">
+        <div className="forest-header">
+          <h1> Junyoung Kang</h1>
+          <h2> Frontend Developer/Web Designer</h2>
+        </div>
+        <div className="content"></div>
+      </div>
+
+      {/* ----------- Second Content /Temple Page ----------- */}
+      <div className="fixed w-full h-full top-0 left-0 temple"></div>
+      <div className="temple_container">
+        <div className="w-5/6 mx-auto md:h-full ">
+          <motion.div
+            margin="0 0 -200px 0"
+            amount="all"
+            onViewportEnter={() => setSelectedPage("skills")}
+          >
+            <MySkills />
+          </motion.div>
+        </div>
+        <LineGradient />
+        <div className="w-5/6 mx-auto">
+          <motion.div
+            margin="0 0 -200px 0"
+            amount="all"
+            onViewportEnter={() => setSelectedPage("projects")}
+          >
+            <Projects />
+          </motion.div>
+        </div>
+        <LineGradient />
+        <div className="w-5/6 mx-auto md:h-full">
+          <motion.div
+            margin="0 0 -200px 0"
+            amount="all"
+            onViewportEnter={() => setSelectedPage("testimonials")}
+          >
+            <Testimonials />
+          </motion.div>
+        </div>
+      </div>
+
+      {/* ----------- Third Content /Deer Page ----------- */}
+      <div className="fixed w-full h-full top-0 left-0 deer"></div>
+      <div className="deer_container">
+        <div className="w-5/6 mx-auto md:h-full">
+          <motion.div
+            margin="0 0 -200px 0"
+            amount="all"
+            onViewportEnter={() => setSelectedPage("contact")}
+          >
+            <Contact />
+          </motion.div>
+        </div>
+        <Footer />
+      </div>
+      {/* End */}
     </div>
   );
 }
