@@ -18,6 +18,16 @@ body,
   /* position: absolute; */
 }
 
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* For IE, Edge and Firefox */
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
 .fog {
   background: url("./assets/fog.webp") bottom/100% repeat-x;
   opacity: 0.3;
@@ -110,9 +120,70 @@ body,
 .temple_container {
   position: relative;
   z-index: 91;
-  max-width: 1140px;
-  margin: 0 auto;
-  margin-top: 1500vh;
+  margin-top: 250vh;
+}
+
+.skillsHeader {
+  position: fixed;
+  margin-top: 10vh;
+  font-size: 40px;
+  font-weight: 600;
+  animation: textChange 5s ease infinite;
+}
+
+@keyframes textChange {
+  0% {
+    color: #e73c7e;
+  }
+  20% {
+    color: #ee7752;
+  }
+  40% {
+    color: #23d5ab;
+  }
+  60% {
+    color: #23a6d5;
+  }
+  80% {
+    color: #9824ce;
+  }
+  100% {
+    color: #e73c7e;
+  }
+}
+
+.ReactLogo {
+  position: fixed;
+  left: 8%;
+}
+.ReduxLogo {
+  position: fixed;
+  left: 21%;
+}
+
+.TailwindLogo {
+  position: fixed;
+  left: 33%;
+}
+
+.JavascriptLogo {
+  position: fixed;
+  left: 45%;
+}
+
+.TypescriptLogo {
+  position: fixed;
+  left: 57%;
+}
+
+.NodeLogo {
+  position: fixed;
+  left: 69%;
+}
+
+.PhotoshopLogo {
+  position: fixed;
+  left: 82%;
 }
 
 .deer_container {
@@ -126,7 +197,6 @@ body,
 .sliding_project {
   height: 100vh;
   width: 100vw;
-  background-color: black;
   margin: 0rem;
   overflow: hidden;
 }

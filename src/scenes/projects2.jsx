@@ -60,10 +60,10 @@ function Projects() {
   window.ontouchmove = (e) => handleMouseMove(e.touches[0]); //This will allow users that uses touch on screen devices
 
   return (
-    <div className="sliding_project left-1/2">
+    <div className="sliding_project">
       <div className="text-white text-center">"Scroll this way -"</div>
       <div
-        className="image-track "
+        className="image-track"
         ref={trackRef}
         data-mouse-down-at="0"
         data-percentage="0"

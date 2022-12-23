@@ -1,5 +1,4 @@
-import Navbar from "./scenes/Navbar";
-import Landing from "./scenes/Landing";
+import Birds from "./scenes/Birds";
 import DotGroup from "./scenes/DotGroup";
 import MySkills from "./scenes/MySkills";
 import LineGradient from "./components/LineGradient";
@@ -11,7 +10,7 @@ import useMediaQuery from "./hooks/useMediaQuery";
 import { useEffect, useState } from "react";
 import Testimonials from "./scenes/Testimonials";
 import { motion } from "framer-motion";
-import Birds from "./assets/birds.png";
+
 function App() {
   const [selectedPage, setSelectedPage] = useState("home");
   const [isTopOfPage, setIsTopOfPage] = useState(true);
@@ -46,7 +45,7 @@ function App() {
       document.getElementsByClassName("forest_container")[0].clientWidth;
     const p = (s / h) * 1000;
     const p_b = (s / h_b) * 100;
-    const opas = 1 - (1 / 100) * p_b; //scale fastest
+    const opas = 1 - (1 / 50) * p_b; //scale fastest
     const z_1 = 1 + (w / 1000) * p_b;
     const z_2 = 1 + (w / 10000) * p_b;
     const z_3 = 1 + (w / 90000) * p_b;
@@ -62,12 +61,12 @@ function App() {
     const hr_3 = (w / 1500000) * p_b;
 
     document.getElementsByClassName(
-      "moon"
-    )[0].style = `transform: scale(${z_10})`;
+      "fog"
+    )[0].style = `transform: translate3d(${hr}px,0,0) scale(${z_forest})`;
 
     document.getElementsByClassName(
-      "fog"
-    )[0].style = `transform: scale(${z_1});opacity: ${opas}`;
+      "moon"
+    )[0].style = `transform: scale(${z_10})`;
 
     //forest starts scaling, others don't
     document.getElementsByClassName(
@@ -105,42 +104,42 @@ function App() {
   };
 
   return (
-    <div className="paralax">
+    <div className="paralax scrollbar-hide">
       <div className="w-5/6 mx-auto md:h-full">
-        {isDesktop && (
-          <DotGroup
-            selectedPage={selectedPage}
-            setSelectedPage={setSelectedPage}
-          />
-        )}
+        <DotGroup
+          selectedPage={selectedPage}
+          setSelectedPage={setSelectedPage}
+        />
         <motion.div
           margin="0 0 -200px 0"
           amount="all"
           onViewportEnter={() => setSelectedPage("home")}
         >
-          <Landing setSelectedPage={setSelectedPage} />
+          <Birds />
         </motion.div>
       </div>
-      <div className="fixed w-full h-full top-0 left-0 fog"></div>
+
+      {/* ----------- Show Fog only on Desktop -----------  */}
+
+      <div className="hidden sm:block fixed w-full h-full top-0 left-0 fog"></div>
+
       <div className="fixed w-full h-full top-0 left-0 moon"></div>
       {/* ----------- First Content Title/Forest Page -----------  */}
       <div className="fixed w-full h-full top-0 left-0 forest"></div>
 
-      <div
-        className={`forest_container ${
-          window.scrollY > 300 ? "z-5000" : "z-91"
-        }`}
-      >
+      <div className={`forest_container z-91`}>
         <div className="forest-header hover:filter hover:saturate-200 transition duration-500">
-          <h1> Junyoung Kang</h1>
-          <h2> Frontend Developer / Web Designer</h2>
+          <div className="md:text-8xl text-4xl"> Junyoung Kang</div>
+          <div className="md:text-4xl"> Frontend Developer / Web Designer</div>
         </div>
       </div>
 
       {/* ----------- Second Content /Temple Page ----------- */}
       <div className="fixed w-full h-full top-0 left-0 temple"></div>
       <div className="temple_container">
-        <div className="w-5/6 mx-auto md:h-full ">
+        <LineGradient />
+
+        <div className="md:h-full ">
           <motion.div
             margin="0 0 -200px 0"
             amount="all"
@@ -149,7 +148,6 @@ function App() {
             <MySkills />
           </motion.div>
         </div>
-        <LineGradient />
         <div className="w-5/6 mx-auto">
           <motion.div
             margin="0 0 -200px 0"
