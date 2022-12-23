@@ -23,7 +23,7 @@ body,
 }
 
 .fog {
-  background: url("./assets/fog.webp") bottom/100% repeat-x;
+  background: url("./assets/fog.png") bottom/100% repeat-x;
   opacity: 0.3;
   animation: moves 20s infinite linear;
   z-index: 1000;
@@ -63,10 +63,18 @@ body,
 }
 
 .deer {
-  background: url("./assets/cool3.png") bottom/100% no-repeat;
+  background: url("./assets/deer.png") bottom/100% no-repeat;
   background-size: cover;
   background-position: center;
   z-index: 80;
+  pointer-events: none;
+}
+
+.owl {
+  background: url("./assets/owl1.png") bottom/100% no-repeat;
+  background-size: cover;
+  background-position: center;
+  z-index: 70;
   pointer-events: none;
 }
 
@@ -253,5 +261,5 @@ body,
   position: relative;
   max-width: 1140px;
   margin: 0 auto;
-  margin-top: 200vh;
+  margin-top: 500vh;
 }

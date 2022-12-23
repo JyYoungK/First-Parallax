@@ -60,6 +60,11 @@ function App() {
     document.getElementsByClassName(
       "fog"
     )[0].style = `transform: translate3d(${hr}px,0,0) scale(${z_forest})`;
+    document.getElementsByClassName("owl")[0].style.display = "none";
+
+    // document.getElementsByClassName(
+    //   "owl"
+    // )[0].style = `transform: translate3d(${hr_2}px,0,0) scale(${z_1})`;
 
     //forest starts scaling, others don't
     document.getElementsByClassName(
@@ -87,15 +92,18 @@ function App() {
 
     if (z_forest > 7) {
       //start scaling fast after forest content finishes
+      document.getElementsByClassName("deer")[0].style.display = "none";
       document.getElementsByClassName(
-        "deer"
-      )[0].style = `transform: translate3d(${-hr}px,0,0) scale(${z_5})`;
+        "owl"
+      )[0].style = `transform: translate3d(${hr_3}px,0,0) scale(${z_8})`;
     }
 
-    if (z_forest > 8.6) {
+    if (z_forest > 10) {
       document.getElementsByClassName(
         "deer"
       )[0].style = `transform: translate3d(${hr_3}px,0,0) scale(${z_1})`;
+      document.getElementsByClassName("owl")[0].style.display = "none";
+
       document.getElementsByClassName(
         "moon"
       )[0].style = `transform: scale(${z_9})`;
@@ -150,8 +158,9 @@ function App() {
         </div>
       </div>
 
-      {/* ----------- Third Content /Deer Page ----------- */}
+      {/* ----------- Fourth Content /Deer Page ----------- */}
       <div className="fixed w-full h-full top-0 left-0 deer"></div>
+      <div className="fixed w-full h-full top-0 left-0 owl"></div>
       <div className="deer_container">
         <Projects />
       </div>
