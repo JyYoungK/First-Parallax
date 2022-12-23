@@ -191,7 +191,7 @@ body,
   z-index: 91;
   max-width: 1140px;
   margin: 0 auto;
-  margin-top: 500vh;
+  margin-top: 450vh;
 }
 
 .sliding_project {
@@ -212,8 +212,8 @@ body,
 }
 
 .image-track > .image {
-  width: 40vmin;
-  height: 56vmin;
+  width: 30vmin;
+  height: 36vmin;
   object-fit: cover;
   object-position: 100% center;
 }

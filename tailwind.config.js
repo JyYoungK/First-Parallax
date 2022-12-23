@@ -6,6 +6,7 @@ module.exports = {
     extend: {
       zIndex: {
         91: "91",
+        1000: "1000",
         5000: "5000",
       },
       colors: {

@@ -36,7 +36,6 @@ function App() {
 
   const handleScroll = () => {
     const s = window.scrollY;
-    console.log(s);
     const w = window.outerWidth;
     const h = document.getElementsByClassName("paralax")[0].clientWidth;
     const h_b =
@@ -49,6 +48,7 @@ function App() {
     const z_3 = 1 + (w / 90000) * p_b;
     const z_4 = 1 + w * 0.00001 * p_b;
     const z_forest = 1 + w * 0.000008 * p_b;
+    const z_5 = 1 + w * 0.000004 * p_b;
     const z_6 = 1 + w * 0.000001 * p_b;
     const z_7 = 1 + w * 0.0000005 * p_b;
     const z_8 = 1 + w * 0.00000001 * p_b;
@@ -58,14 +58,11 @@ function App() {
     const hr = (w / 1500) * p_b; //scale fastest
     const hr_2 = (w / 15000) * p_b;
     const hr_3 = (w / 1500000) * p_b;
+    const hr_4 = (w / 15000000) * p_b;
 
     document.getElementsByClassName(
       "fog"
     )[0].style = `transform: translate3d(${hr}px,0,0) scale(${z_forest})`;
-
-    document.getElementsByClassName(
-      "moon"
-    )[0].style = `transform: scale(${z_10})`;
 
     //forest starts scaling, others don't
     document.getElementsByClassName(
@@ -81,7 +78,7 @@ function App() {
       )[0].style = `transform: translate3d(${hr_3}px,0,0) scale(${z_8})`;
     }
 
-    if (z_forest <= 15 && z_forest > 4) {
+    if (z_forest <= 7 && z_forest > 4) {
       //start scaling after forest finishes scaling
       document.getElementsByClassName(
         "temple"
@@ -91,15 +88,27 @@ function App() {
       )[0].style = `transform: translate3d(${hr_3}px,0,0) scale(${z_7})`;
     }
 
-    if (z_forest > 15) {
+    if (z_forest > 7) {
       //start scaling fast after forest content finishes
       document.getElementsByClassName(
-        "temple"
-      )[0].style = `transform: translate3d(${hr_2}px,0,0) scale(${z_4})`;
+        "deer"
+      )[0].style = `transform: translate3d(${-hr}px,0,0) scale(${z_5})`;
+    }
+
+    if (z_forest > 8.3) {
       document.getElementsByClassName(
         "deer"
-      )[0].style = `transform: translate3d(${hr_3}px,0,0) scale(${z_9})`;
+      )[0].style = `transform: translate3d(${hr_3}px,0,0) scale(${z_1})`;
+      document.getElementsByClassName(
+        "moon"
+      )[0].style = `transform: scale(${z_9})`;
+    } else {
+      document.getElementsByClassName(
+        "moon"
+      )[0].style = `transform: scale(${z_10})`;
     }
+
+    console.log(z_forest);
   };
 
   return (
@@ -147,42 +156,44 @@ function App() {
             <MySkills />
           </motion.div>
         </div>
-        <div className="w-5/6 mx-auto">
-          <motion.div
-            margin="0 0 -200px 0"
-            amount="all"
-            onViewportEnter={() => setSelectedPage("projects")}
-          >
-            <Projects2 />
-            {/* <Projects /> */}
-          </motion.div>
-        </div>
-        <LineGradient />
-        <div className="w-5/6 mx-auto md:h-full">
-          <motion.div
-            margin="0 0 -200px 0"
-            amount="all"
-            onViewportEnter={() => setSelectedPage("testimonials")}
-          >
-            <Testimonials />
-          </motion.div>
-        </div>
       </div>
 
       {/* ----------- Third Content /Deer Page ----------- */}
       <div className="fixed w-full h-full top-0 left-0 deer"></div>
       <div className="deer_container">
         <div className="w-5/6 mx-auto md:h-full">
+          <div className="w-5/6 mx-auto mb-80">
+            <motion.div
+              margin="0 0 -200px 0"
+              amount="all"
+              onViewportEnter={() => setSelectedPage("projects")}
+            >
+              <Projects2 />
+              {/* <Projects /> */}
+            </motion.div>
+          </div>
+          {/* <LineGradient />
+
           <motion.div
             margin="0 0 -200px 0"
             amount="all"
             onViewportEnter={() => setSelectedPage("contact")}
           >
             <Contact />
-          </motion.div>
+          </motion.div> */}
         </div>
-        <Footer />
       </div>
+      <div className="w-5/6 mx-auto md:h-full mt-80">
+        <motion.div
+          margin="0 0 -200px 0"
+          amount="all"
+          onViewportEnter={() => setSelectedPage("testimonials")}
+        >
+          <Testimonials />
+        </motion.div>
+      </div>
+      <Footer />
+
       {/* End */}
     </div>
   );

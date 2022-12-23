@@ -1,69 +1,99 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 
 function Projects() {
   const trackRef = useRef(null);
+  const [scrollCount, setScrollCount] = useState(0);
 
-  const handleMouseClick = (e) => {
-    //Creating a function that saves the mouse position when clicked
-    trackRef.current.setAttribute("data-mouse-down-at", e.clientX.toString());
-  };
+  useEffect(() => {
+    function handleScroll() {
+      const scrollTop =
+        window.pageYOffset || document.documentElement.scrollTop;
+      if (scrollTop > 6200 && scrollTop < 7200) {
+        setScrollCount(scrollCount + 1);
+      } else {
+        setScrollCount(0);
+      }
 
-  const handleMouseMove = (e) => {
-    // Creating a function to handle the mouse movement anywhere on the screen
-    if (trackRef.current.getAttribute("data-mouse-down-at") === "0") return;
-    const mouseDelta =
-        parseFloat(trackRef.current.getAttribute("data-mouse-down-at")) -
-        e.clientX,
-      maxDelta = window.innerWidth / 2;
+      // trackRef.current.style.transform = `translate(${-(
+      //   scrollCount * 4
+      // )}%, -50%)`;
 
-    const percentage = (mouseDelta / maxDelta) * -100,
-      nextPercentageUnconstrained =
-        parseFloat(trackRef.current.getAttribute("data-prev-percentage")) +
-        percentage, //sets the limit to the screen
-      nextPercentage = Math.max(Math.min(nextPercentageUnconstrained, 0), -400); //max value 0 and min value -100
-
-    trackRef.current.setAttribute("data-percentage", nextPercentage.toString());
-    trackRef.current.style.animation = "transform 1200ms forwards";
-    trackRef.current.style.transform = `translate(${
-      nextPercentage / 2
-    }%, -50%)`;
-
-    for (const image of trackRef.current.getElementsByClassName("image")) {
-      image.animate(
-        {
-          objectPosition: `${100 + nextPercentage / 2}% center`,
-        },
-        { duration: 1200, fill: "forwards" }
-      );
+      for (const image of trackRef.current.getElementsByClassName("image")) {
+        image.animate(
+          {
+            objectPosition: `${100 + -(scrollCount * 10)}% center`,
+          },
+          { duration: 1200, fill: "forwards" }
+        );
+      }
     }
-  };
+    window.addEventListener("scroll", handleScroll);
 
-  const handleMouseRelease = () => {
-    //Creating a function to reset the mouse position when released
-    trackRef.current.setAttribute("data-mouse-down-at", "0");
-    trackRef.current.setAttribute(
-      "data-prev-percentage",
-      trackRef.current.getAttribute("data-percentage")
-    ); //This will remember the slide position and start from there instead of resetting to 0
-  };
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [scrollCount]);
 
-  window.onmousedown = (e) => handleMouseClick(e);
+  // const handleMouseClick = (e) => {
+  //   //Creating a function that saves the mouse position when clicked
+  //   trackRef.current.setAttribute("data-mouse-down-at", e.clientX.toString());
+  // };
 
-  window.onmouseup = (e) => handleMouseRelease(e);
+  // const handleMouseMove = (e) => {
+  //   // Creating a function to handle the mouse movement anywhere on the screen
+  //   if (trackRef.current.getAttribute("data-mouse-down-at") === "0") return;
+  //   const mouseDelta =
+  //       parseFloat(trackRef.current.getAttribute("data-mouse-down-at")) -
+  //       e.clientX,
+  //     maxDelta = window.innerWidth / 2;
 
-  window.onmousemove = (e) => handleMouseMove(e);
+  //   const percentage = (mouseDelta / maxDelta) * -100,
+  //     nextPercentageUnconstrained =
+  //       parseFloat(trackRef.current.getAttribute("data-prev-percentage")) +
+  //       percentage, //sets the limit to the screen
+  //     nextPercentage = Math.max(Math.min(nextPercentageUnconstrained, 0), -400); //max value 0 and min value -100
 
-  window.ontouchstart = (e) => handleMouseClick(e.touches[0]); //This will allow users that uses touch on screen devices
+  //   trackRef.current.setAttribute("data-percentage", nextPercentage.toString());
+  //   trackRef.current.style.animation = "transform 1200ms forwards";
+  //   trackRef.current.style.transform = `translate(${
+  //     nextPercentage / 2
+  //   }%, -50%)`;
 
-  window.ontouchend = (e) => handleMouseRelease(e.touches[0]); //This will allow users that uses touch on screen devices
+  //   for (const image of trackRef.current.getElementsByClassName("image")) {
+  //     image.animate(
+  //       {
+  //         objectPosition: `${100 + nextPercentage / 2}% center`,
+  //       },
+  //       { duration: 1200, fill: "forwards" }
+  //     );
+  //   }
+  // };
 
-  window.ontouchmove = (e) => handleMouseMove(e.touches[0]); //This will allow users that uses touch on screen devices
+  // const handleMouseRelease = () => {
+  //   //Creating a function to reset the mouse position when released
+  //   trackRef.current.setAttribute("data-mouse-down-at", "0");
+  //   trackRef.current.setAttribute(
+  //     "data-prev-percentage",
+  //     trackRef.current.getAttribute("data-percentage")
+  //   ); //This will remember the slide position and start from there instead of resetting to 0
+  // };
+
+  // window.onmousedown = (e) => handleMouseClick(e);
+
+  // window.ontouchstart = (e) => handleMouseClick(e.touches[0]); //This will allow users that uses touch on screen devices
+
+  // window.onmouseup = (e) => handleMouseRelease(e);
+
+  // window.ontouchend = (e) => handleMouseRelease(e.touches[0]); //This will allow users that uses touch on screen devices
+
+  // window.onmousemove = (e) => handleMouseMove(e);
+
+  // window.ontouchmove = (e) => handleMouseMove(e.touches[0]); //This will allow users that uses touch on screen devices
 
   return (
-    <div className="sliding_project">
-      <div className="text-white text-center">"Scroll this way -"</div>
+    <div className="grid grid-cols-3">
       <div
-        className="image-track"
+        className="image-track content-end"
         ref={trackRef}
         data-mouse-down-at="0"
         data-percentage="0"
@@ -85,36 +115,6 @@ function Projects() {
           className="image"
           alt="portfolio"
           src="https://images.unsplash.com/photo-1618202133208-2907bebba9e1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-          draggable="false"
-        />
-        <img
-          className="image"
-          alt="portfolio"
-          src="https://images.unsplash.com/photo-1495805442109-bf1cf975750b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-          draggable="false"
-        />
-        <img
-          className="image"
-          alt="portfolio"
-          src="https://images.unsplash.com/photo-1548021682-1720ed403a5b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-          draggable="false"
-        />
-        <img
-          className="image"
-          alt="portfolio"
-          src="https://images.unsplash.com/photo-1496753480864-3e588e0269b3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2134&q=80"
-          draggable="false"
-        />
-        <img
-          className="image"
-          alt="portfolio"
-          src="https://images.unsplash.com/photo-1613346945084-35cccc812dd5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1759&q=80"
-          draggable="false"
-        />
-        <img
-          className="image"
-          alt="portfolio"
-          src="https://images.unsplash.com/photo-1516681100942-77d8e7f9dd97?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
           draggable="false"
         />
       </div>

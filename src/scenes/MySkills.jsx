@@ -19,7 +19,6 @@ const MySkills = () => {
   const w = window.outerWidth;
 
   useEffect(() => {
-    console.log(w);
     function handleScroll() {
       const scrollTop =
         window.pageYOffset || document.documentElement.scrollTop;
@@ -30,7 +29,7 @@ const MySkills = () => {
       column5Ref.current.style.transform = `translateY(${scrollTop}px)`;
       column7Ref.current.style.transform = `translateY(${scrollTop}px)`;
       //Moves Down
-      if (scrollTop == 2800) {
+      if (scrollTop > 2700 && scrollTop < 2900) {
         skillRef.current.style.transform = `translateX(${
           w / 100
         }px) translateY(-${scrollTop}px) `;
@@ -49,7 +48,7 @@ const MySkills = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  });
 
   return (
     <section id="skills" className="pt-10 pb-24 ">
