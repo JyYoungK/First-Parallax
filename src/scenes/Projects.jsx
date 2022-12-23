@@ -37,6 +37,29 @@ const Projects = () => {
     };
   }, [scrollCount]);
 
+  const circleRef = useRef(null);
+
+  useEffect(() => {
+    const circle = circleRef.current;
+    const text = circle.dataset.text;
+    const characters = text.split("");
+
+    const deltaAngle = 360 / characters.length;
+    const distanceFromCenter = 256;
+
+    characters.forEach((character, index) => {
+      console.log(index);
+      const span = document.createElement("span");
+      span.innerText = character;
+
+      const rotateY = `rotateY(${index * deltaAngle}deg)`;
+      const translateZ = `translateZ(${distanceFromCenter}px)`;
+      span.style.transform = `${rotateY} ${translateZ}`;
+
+      circle.appendChild(span);
+    });
+  }, []);
+
   function openSpy() {
     window.open("http://spyproject.netlify.com/", "_blank");
   }
@@ -133,9 +156,11 @@ const Projects = () => {
         />
       </div>
 
-      <div className="projectDesc md:text-8xl text-4xl text-white animate-bounce">
-        PROJECTS
-      </div>
+      <div
+        className="projectDesc md:text-8xl font-black  text-4xl text-[#80b0ce] "
+        ref={circleRef}
+        data-text="2023 PROJECTS"
+      ></div>
     </div>
   );
 };

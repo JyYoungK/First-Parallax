@@ -6,7 +6,6 @@ import JavascriptLogo from "../assets/logo/JavascriptLogo.png";
 import TypescriptLogo from "../assets/logo/TypescriptLogo.png";
 import NodeLogo from "../assets/logo/NodeLogo.png";
 import PhotoshopLogo from "../assets/logo/PhotoshopLogo.png";
-import LineGradient from "../components/LineGradient";
 
 const MySkills = () => {
   const skillRef = useRef(null);

@@ -164,7 +164,15 @@ function App() {
 
       {/* ----------- Last Content /Moon Page ----------- */}
 
-      <div className="fixed w-full h-full top-0 left-0 moon"></div>
+      <div className="fixed w-full h-full top-0 left-0 moon">
+        <div id="stars"></div>
+        <div id="stars2"></div>
+        <div id="stars3"></div>
+        <div id="stars4"></div>
+        <div id="stars5"></div>
+        <div id="stars6"></div>
+        <div id="stars7"></div>
+      </div>
       <div className="moon_container">
         <motion.div
           margin="0 0 -200px 0"
