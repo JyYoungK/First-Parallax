@@ -6,7 +6,6 @@ import Projects from "./scenes/Projects";
 import Projects2 from "./scenes/projects2";
 import Contact from "./scenes/Contact";
 import Footer from "./scenes/Footer";
-import useMediaQuery from "./hooks/useMediaQuery";
 import { useEffect, useState } from "react";
 import Testimonials from "./scenes/Testimonials";
 import { motion } from "framer-motion";
@@ -14,7 +13,6 @@ import { motion } from "framer-motion";
 function App() {
   const [selectedPage, setSelectedPage] = useState("home");
   const [isTopOfPage, setIsTopOfPage] = useState(true);
-  const isDesktop = useMediaQuery("(min-width: 1060px)");
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -56,6 +54,7 @@ function App() {
     const z_8 = 1 + w * 0.00000001 * p_b;
     const z_9 = 1 + w * 0.00000005 * p_b;
     const z_10 = 1 + (w / 50000000) * p; //scale slowest
+    const skip_to_deer = (w / 150) * p_b;
     const hr = (w / 1500) * p_b; //scale fastest
     const hr_2 = (w / 15000) * p_b;
     const hr_3 = (w / 1500000) * p_b;
@@ -86,10 +85,10 @@ function App() {
       //start scaling after forest finishes scaling
       document.getElementsByClassName(
         "temple"
-      )[0].style = `transform: translate3d(${hr_2}px,0,0) scale(${z_6})`;
+      )[0].style = `transform: translate3d(${skip_to_deer}px,0,0) scale(${z_6})`;
       document.getElementsByClassName(
         "deer"
-      )[0].style = `transform: translate3d(${hr_3}px,0,0) scale(${z_8})`;
+      )[0].style = `transform: translate3d(${hr_3}px,0,0) scale(${z_7})`;
     }
 
     if (z_forest > 15) {
@@ -122,8 +121,8 @@ function App() {
       {/* ----------- Show Fog only on Desktop -----------  */}
 
       <div className="hidden sm:block fixed w-full h-full top-0 left-0 fog"></div>
-
       <div className="fixed w-full h-full top-0 left-0 moon"></div>
+
       {/* ----------- First Content Title/Forest Page -----------  */}
       <div className="fixed w-full h-full top-0 left-0 forest"></div>
 
