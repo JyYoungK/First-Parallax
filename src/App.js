@@ -5,7 +5,7 @@ import LineGradient from "./components/LineGradient";
 import Projects from "./scenes/Projects";
 import Contact from "./scenes/Contact";
 import { useEffect, useState } from "react";
-import Testimonials from "./scenes/Testimonials";
+import Thanks from "./scenes/Thanks";
 import { motion } from "framer-motion";
 
 function App() {
@@ -93,7 +93,7 @@ function App() {
       )[0].style = `transform: translate3d(${-hr}px,0,0) scale(${z_5})`;
     }
 
-    if (z_forest > 8.3) {
+    if (z_forest > 8.6) {
       document.getElementsByClassName(
         "deer"
       )[0].style = `transform: translate3d(${hr_3}px,0,0) scale(${z_1})`;
@@ -177,27 +177,19 @@ function App() {
         <motion.div
           margin="0 0 -200px 0"
           amount="all"
-          onViewportEnter={() => setSelectedPage("testimonials")}
+          onViewportEnter={() => setSelectedPage("thanks")}
         >
-          <Testimonials />
+          <Thanks />
+          <Contact />
         </motion.div>
-        <motion.div
+        {/* <motion.div
           margin="0 0 -200px 0"
           amount="all"
           onViewportEnter={() => setSelectedPage("contact")}
         >
           <Contact />
-        </motion.div>
+        </motion.div> */}
       </div>
-      {/* <div className="w-5/6 mx-auto md:h-full mt-80">
-        <motion.div
-          margin="0 0 -200px 0"
-          amount="all"
-          onViewportEnter={() => setSelectedPage("testimonials")}
-        >
-          <Testimonials />
-        </motion.div>
-      </div> */}
 
       {/* End */}
     </div>

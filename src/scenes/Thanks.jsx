@@ -1,12 +1,11 @@
-import LineGradient from "../components/LineGradient";
 import { motion } from "framer-motion";
 
-const Testimonials = () => {
+const Thanks = () => {
   return (
-    <section id="testimonials" className="pt-32 pb-16">
+    <section id="thanks" className="pt-32 pb-16">
       {/* HEADING */}
       <motion.div
-        className="md:w-1/3 text-center md:text-left"
+        className="md:w-3/5 text-center md:text-left"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.5 }}
@@ -16,18 +15,19 @@ const Testimonials = () => {
           visible: { opacity: 1, x: 0 },
         }}
       >
-        <p className="font-playfair font-semibold text-4xl mb-5 text-red">
-          TESTIMONIALS
-        </p>
-        <LineGradient width="mx-auto w-2/5" />
-        <p className="mt-10">
-          Here's What People are Saying About My Work. Aliquam aliquet integer
-          ut fames odio in at. At magna ornare dictum lectus.
-        </p>
+        <div className="font-playfair font-extrabold text-4xl mb-5 text-white">
+          Thank you. The journey ends here.
+        </div>
+        <div className={`h-0.5 w-full bg-gradient-starblue`} />
+        <div className="mt-10 text-2xl text-white">
+          I hope you enjoyed the journey as much as I did. I inspire to become a
+          better developer & designer. I am always open to new opportunities. In
+          2023, I want to make more fascinating websites, stay tuned. If you
+          liked my work, it's my pleasure if contact me.
+        </div>
       </motion.div>
 
-      {/* TESTIMONIALS */}
-      <div className="md:flex md:justify-between gap-8">
+      {/* <div className="md:flex md:justify-between gap-8">
         <motion.div
           className="mx-auto relative bg-blue max-w-[400px] h-[350px] flex flex-col justify-end p-16 mt-48
             before:absolute before:top-[-120px] before:-ml-[110px] before:left-1/2 before:content-person1"
@@ -82,9 +82,9 @@ const Testimonials = () => {
             Fames odio in at. At magna ornare dictum lectus.
           </p>
         </motion.div>
-      </div>
+      </div> */}
     </section>
   );
 };
 
-export default Testimonials;
+export default Thanks;

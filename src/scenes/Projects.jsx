@@ -24,7 +24,7 @@ const Projects = () => {
       for (const image of trackRef.current.getElementsByClassName("image")) {
         image.animate(
           {
-            objectPosition: `${100 + -(scrollCount * 10)}% center`,
+            objectPosition: `${100 + -(scrollCount * 7)}% center`,
           },
           { duration: 1200, fill: "forwards" }
         );
