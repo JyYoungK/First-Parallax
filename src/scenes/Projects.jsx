@@ -1,105 +1,142 @@
-import LineGradient from "../components/LineGradient";
-import { motion } from "framer-motion";
-
-const container = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.2,
-    },
-  },
-};
-
-const projectVariant = {
-  hidden: { opacity: 0, scale: 0.8 },
-  visible: { opacity: 1, scale: 1 },
-};
-
-const Project = ({ title }) => {
-  const overlayStyles = `absolute h-full w-full opacity-0 hover:opacity-90 transition duration-500
-    bg-grey z-30 flex flex-col justify-center items-center text-center p-16 text-deep-blue`;
-  const projectTitle = title.split(" ").join("-").toLowerCase();
-
-  return (
-    <motion.div variants={projectVariant} className="relative">
-      <div className={overlayStyles}>
-        <p className="text-2xl font-playfair">{title}</p>
-        <p className="mt-7">
-          Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Nulla
-          porttitor accumsan tincidunt.
-        </p>
-      </div>
-      <img src={`../assets/${projectTitle}.jpeg`} alt={projectTitle} />
-    </motion.div>
-  );
-};
+import React, { useRef, useState, useEffect } from "react";
+import News from "../assets/news2.png";
 
 const Projects = () => {
+  const trackRef = useRef(null);
+  const [scrollCount, setScrollCount] = useState(0);
+
+  useEffect(() => {
+    function handleScroll() {
+      if (!trackRef.current) return;
+
+      const scrollTop =
+        window.pageYOffset || document.documentElement.scrollTop;
+      if (scrollTop > 6200 && scrollTop < 7200) {
+        setScrollCount(scrollCount + 1);
+      } else {
+        setScrollCount(0);
+      }
+
+      // trackRef.current.style.transform = `translate(${-(
+      //   scrollCount * 4
+      // )}%, -50%)`;
+
+      for (const image of trackRef.current.getElementsByClassName("image")) {
+        image.animate(
+          {
+            objectPosition: `${100 + -(scrollCount * 10)}% center`,
+          },
+          { duration: 1200, fill: "forwards" }
+        );
+      }
+    }
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [scrollCount]);
+
+  function openSpy() {
+    window.open("http://spyproject.netlify.com/", "_blank");
+  }
+  function openNews() {
+    window.open("https://newsproject-jyyoungk.vercel.app/", "_blank");
+  }
+  // function openAI() {
+  //   window.location.href = 'https://www.example.com';
+  // }
+  // const handleMouseClick = (e) => {
+  //   //Creating a function that saves the mouse position when clicked
+  //   trackRef.current.setAttribute("data-mouse-down-at", e.clientX.toString());
+  // };
+
+  // const handleMouseMove = (e) => {
+  //   // Creating a function to handle the mouse movement anywhere on the screen
+  //   if (trackRef.current.getAttribute("data-mouse-down-at") === "0") return;
+  //   const mouseDelta =
+  //       parseFloat(trackRef.current.getAttribute("data-mouse-down-at")) -
+  //       e.clientX,
+  //     maxDelta = window.innerWidth / 2;
+
+  //   const percentage = (mouseDelta / maxDelta) * -100,
+  //     nextPercentageUnconstrained =
+  //       parseFloat(trackRef.current.getAttribute("data-prev-percentage")) +
+  //       percentage, //sets the limit to the screen
+  //     nextPercentage = Math.max(Math.min(nextPercentageUnconstrained, 0), -400); //max value 0 and min value -100
+
+  //   trackRef.current.setAttribute("data-percentage", nextPercentage.toString());
+  //   trackRef.current.style.animation = "transform 1200ms forwards";
+  //   trackRef.current.style.transform = `translate(${
+  //     nextPercentage / 2
+  //   }%, -50%)`;
+
+  //   for (const image of trackRef.current.getElementsByClassName("image")) {
+  //     image.animate(
+  //       {
+  //         objectPosition: `${100 + nextPercentage / 2}% center`,
+  //       },
+  //       { duration: 1200, fill: "forwards" }
+  //     );
+  //   }
+  // };
+
+  // const handleMouseRelease = () => {
+  //   //Creating a function to reset the mouse position when released
+  //   trackRef.current.setAttribute("data-mouse-down-at", "0");
+  //   trackRef.current.setAttribute(
+  //     "data-prev-percentage",
+  //     trackRef.current.getAttribute("data-percentage")
+  //   ); //This will remember the slide position and start from there instead of resetting to 0
+  // };
+
+  // window.onmousedown = (e) => handleMouseClick(e);
+
+  // window.ontouchstart = (e) => handleMouseClick(e.touches[0]); //This will allow users that uses touch on screen devices
+
+  // window.onmouseup = (e) => handleMouseRelease(e);
+
+  // window.ontouchend = (e) => handleMouseRelease(e.touches[0]); //This will allow users that uses touch on screen devices
+
+  // window.onmousemove = (e) => handleMouseMove(e);
+
+  // window.ontouchmove = (e) => handleMouseMove(e.touches[0]); //This will allow users that uses touch on screen devices
+
   return (
-    <section id="projects" className="pt-48 pb-48">
-      {/* HEADINGS */}
-      <motion.div
-        className="md:w-2/5 mx-auto text-center"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.5 }}
-        transition={{ duration: 0.5 }}
-        variants={{
-          hidden: { opacity: 0, y: -50 },
-          visible: { opacity: 1, y: 0 },
-        }}
+    <div className="flex flex-col">
+      <div
+        className="image-track content-end"
+        ref={trackRef}
+        data-mouse-down-at="0"
+        data-percentage="0"
+        data-prev-percentage="0"
       >
-        <div>
-          <p className="font-playfair font-semibold text-4xl">
-            <span className="text-red">PRO</span>JECTS
-          </p>
-          <div className="flex justify-center mt-5">
-            <LineGradient width="w-2/3" />
-          </div>
-        </div>
-        <p className="mt-10 mb-10">
-          Aliquam, amet dui feugiat facilisi dui. Aliquam aliquet integer ut
-          fames odio in at. At magna ornare dictum lectus. Purus massa morbi
-          purus nec eget eleifend ut elit.
-        </p>
-      </motion.div>
-
-      {/* PROJECTS */}
-      <div className="flex justify-center">
-        <motion.div
-          className="sm:grid sm:grid-cols-3"
-          variants={container}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-        >
-          {/* ROW 1 */}
-          <div
-            className="flex justify-center text-center items-center p-10 bg-red
-              max-w-[400px] max-h-[400px] text-2xl font-playfair font-semibold"
-          >
-            BEAUTIFUL USER INTERFACES
-          </div>
-          <Project title="Project 1" />
-          <Project title="Project 2" />
-
-          {/* ROW 2 */}
-          <Project title="Project 3" />
-          <Project title="Project 4" />
-          <Project title="Project 5" />
-
-          {/* ROW 3 */}
-          <Project title="Project 6" />
-          <Project title="Project 7" />
-          <div
-            className="flex justify-center text-center items-center p-10 bg-blue
-              max-w-[400px] max-h-[400px] text-2xl font-playfair font-semibold"
-          >
-            SMOOTH USER EXPERIENCE
-          </div>
-        </motion.div>
+        <img
+          className="image"
+          alt="portfolio"
+          src="https://i.ibb.co/kMw3GxM/318079798-707876150953305-3898617955148906755-n.png"
+          draggable="false"
+          onClick={() => openSpy()}
+        />
+        <img
+          className="image"
+          alt="portfolio"
+          src={News}
+          draggable="false"
+          onClick={() => openNews()}
+        />
+        <img
+          className="image"
+          alt="portfolio"
+          src="https://i.ibb.co/mhgtvPQ/AI-HERO-58306268c6f4b659459f5b7b2dd3e8a5.jpg"
+          draggable="false"
+        />
       </div>
-    </section>
+
+      <div className="projectDesc md:text-8xl text-4xl text-white animate-bounce">
+        PROJECTS
+      </div>
+    </div>
   );
 };
 

@@ -1,4 +1,5 @@
 import AnchorLink from "react-anchor-link-smooth-scroll";
+import { NavLink } from "react-router-dom";
 
 const DotGroup = ({ selectedPage, setSelectedPage }) => {
   const selectedStyles = `relative bg-yellow before:absolute before:w-6 before:h-6 before:rounded-full

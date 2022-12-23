@@ -3,9 +3,7 @@ import DotGroup from "./scenes/DotGroup";
 import MySkills from "./scenes/MySkills";
 import LineGradient from "./components/LineGradient";
 import Projects from "./scenes/Projects";
-import Projects2 from "./scenes/projects2";
 import Contact from "./scenes/Contact";
-import Footer from "./scenes/Footer";
 import { useEffect, useState } from "react";
 import Testimonials from "./scenes/Testimonials";
 import { motion } from "framer-motion";
@@ -107,8 +105,6 @@ function App() {
         "moon"
       )[0].style = `transform: scale(${z_10})`;
     }
-
-    console.log(z_forest);
   };
 
   return (
@@ -130,7 +126,6 @@ function App() {
       {/* ----------- Show Fog only on Desktop -----------  */}
 
       <div className="hidden sm:block fixed w-full h-full top-0 left-0 fog"></div>
-      <div className="fixed w-full h-full top-0 left-0 moon"></div>
 
       {/* ----------- First Content Title/Forest Page -----------  */}
       <div className="fixed w-full h-full top-0 left-0 forest"></div>
@@ -145,11 +140,9 @@ function App() {
       {/* ----------- Second Content /Temple Page ----------- */}
       <div className="fixed w-full h-full top-0 left-0 temple"></div>
       <div className="temple_container">
-        <LineGradient />
-
-        <div className="md:h-full ">
+        <div className="md:h-full">
           <motion.div
-            margin="0 0 -200px 0"
+            margin="0 0 0 0"
             amount="all"
             onViewportEnter={() => setSelectedPage("skills")}
           >
@@ -161,29 +154,18 @@ function App() {
       {/* ----------- Third Content /Deer Page ----------- */}
       <div className="fixed w-full h-full top-0 left-0 deer"></div>
       <div className="deer_container">
-        <div className="w-5/6 mx-auto md:h-full">
-          <div className="w-5/6 mx-auto mb-80">
-            <motion.div
-              margin="0 0 -200px 0"
-              amount="all"
-              onViewportEnter={() => setSelectedPage("projects")}
-            >
-              <Projects2 />
-              {/* <Projects /> */}
-            </motion.div>
-          </div>
-          {/* <LineGradient />
-
-          <motion.div
-            margin="0 0 -200px 0"
-            amount="all"
-            onViewportEnter={() => setSelectedPage("contact")}
-          >
-            <Contact />
-          </motion.div> */}
-        </div>
+        <motion.div
+          margin="0 0 0 0"
+          amount="all"
+          onViewportEnter={() => setSelectedPage("projects")}
+        ></motion.div>
+        <Projects />
       </div>
-      <div className="w-5/6 mx-auto md:h-full mt-80">
+
+      {/* ----------- Last Content /Moon Page ----------- */}
+
+      <div className="fixed w-full h-full top-0 left-0 moon"></div>
+      <div className="moon_container">
         <motion.div
           margin="0 0 -200px 0"
           amount="all"
@@ -191,8 +173,23 @@ function App() {
         >
           <Testimonials />
         </motion.div>
+        <motion.div
+          margin="0 0 -200px 0"
+          amount="all"
+          onViewportEnter={() => setSelectedPage("contact")}
+        >
+          <Contact />
+        </motion.div>
       </div>
-      <Footer />
+      {/* <div className="w-5/6 mx-auto md:h-full mt-80">
+        <motion.div
+          margin="0 0 -200px 0"
+          amount="all"
+          onViewportEnter={() => setSelectedPage("testimonials")}
+        >
+          <Testimonials />
+        </motion.div>
+      </div> */}
 
       {/* End */}
     </div>

@@ -6,6 +6,7 @@ import JavascriptLogo from "../assets/logo/JavascriptLogo.png";
 import TypescriptLogo from "../assets/logo/TypescriptLogo.png";
 import NodeLogo from "../assets/logo/NodeLogo.png";
 import PhotoshopLogo from "../assets/logo/PhotoshopLogo.png";
+import LineGradient from "../components/LineGradient";
 
 const MySkills = () => {
   const skillRef = useRef(null);
@@ -16,6 +17,8 @@ const MySkills = () => {
   const column5Ref = useRef(null);
   const column6Ref = useRef(null);
   const column7Ref = useRef(null);
+  const columnLineRef = useRef(null);
+
   const w = window.outerWidth;
 
   useEffect(() => {
@@ -28,6 +31,8 @@ const MySkills = () => {
       column3Ref.current.style.transform = `translateY(${scrollTop}px)`;
       column5Ref.current.style.transform = `translateY(${scrollTop}px)`;
       column7Ref.current.style.transform = `translateY(${scrollTop}px)`;
+      columnLineRef.current.style.transform = `translateY(${scrollTop}px)`;
+
       //Moves Down
       if (scrollTop > 2700 && scrollTop < 2900) {
         skillRef.current.style.transform = `translateX(${
@@ -35,7 +40,7 @@ const MySkills = () => {
         }px) translateY(-${scrollTop}px) `;
       } else {
         skillRef.current.style.transform = `translateX(${
-          scrollTop / 2
+          scrollTop / 40
         }px) translateY(-${scrollTop}px) `;
       }
       column2Ref.current.style.transform = `translateY(-${scrollTop}px)`;
@@ -88,6 +93,12 @@ const MySkills = () => {
       <div ref={column7Ref} className="PhotoshopLogo" style={{ top: -2500 }}>
         <img className="w-36 h-36" alt="PhotoshopLogo" src={PhotoshopLogo} />
       </div>
+
+      <div
+        ref={columnLineRef}
+        className="fixed h-1.5 w-full left-0 bg-gradient-rainblue"
+        style={{ top: -2300 }}
+      ></div>
     </section>
   );
 };

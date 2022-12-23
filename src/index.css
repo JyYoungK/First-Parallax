@@ -22,17 +22,12 @@ body,
   display: none;
 }
 
-/* For IE, Edge and Firefox */
-.scrollbar-hide {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-}
-
 .fog {
   background: url("./assets/fog.webp") bottom/100% repeat-x;
   opacity: 0.3;
   animation: moves 20s infinite linear;
   z-index: 1000;
+  pointer-events: none;
 }
 
 @keyframes moves {
@@ -43,11 +38,12 @@ body,
 
 .dot_container {
   position: fixed;
-  z-index: 5000;
+  z-index: 1100;
 }
 
 .moon {
   background: url("./assets/m_1.png") center/cover no-repeat;
+  pointer-events: none;
 }
 
 .forest {
@@ -55,6 +51,7 @@ body,
   background-size: cover;
   background-position: center;
   z-index: 100;
+  pointer-events: none;
 }
 
 .temple {
@@ -62,6 +59,7 @@ body,
   background-size: cover;
   background-position: center;
   z-index: 90;
+  pointer-events: none;
 }
 
 .deer {
@@ -69,6 +67,7 @@ body,
   background-size: cover;
   background-position: center;
   z-index: 80;
+  pointer-events: none;
 }
 
 .forest_container {
@@ -119,6 +118,8 @@ body,
 
 .temple_container {
   position: relative;
+  max-width: 1140px;
+  margin: 0 auto;
   z-index: 91;
   margin-top: 250vh;
 }
@@ -188,10 +189,10 @@ body,
 
 .deer_container {
   position: relative;
-  z-index: 91;
   max-width: 1140px;
   margin: 0 auto;
   margin-top: 450vh;
+  z-index: 91;
 }
 
 .sliding_project {
@@ -217,3 +218,16 @@ body,
   object-fit: cover;
   object-position: 100% center;
 }
+
+/* .projectDesc {
+  position: absolute;
+  right: 1px;
+  top: 200px;
+} */
+
+/* .moon_container {
+  position: relative;
+  max-width: 1140px;
+  margin: 0 auto;
+  margin-top: 200vh;
+} */
