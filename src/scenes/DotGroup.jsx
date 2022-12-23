@@ -1,5 +1,4 @@
 import AnchorLink from "react-anchor-link-smooth-scroll";
-import { NavLink } from "react-router-dom";
 
 const DotGroup = ({ selectedPage, setSelectedPage }) => {
   const selectedStyles = `relative bg-yellow before:absolute before:w-6 before:h-6 before:rounded-full
@@ -24,27 +23,11 @@ const DotGroup = ({ selectedPage, setSelectedPage }) => {
       />
 
       <AnchorLink
-        href="#projects"
-        className={`${
-          selectedPage === "projects" ? selectedStyles : "bg-dark-grey"
-        } w-3 h-3 rounded-full`}
-        onClick={() => setSelectedPage("projects")}
-      />
-
-      <AnchorLink
         href="#thanks"
         className={`${
           selectedPage === "thanks" ? selectedStyles : "bg-dark-grey"
         } w-3 h-3 rounded-full`}
         onClick={() => setSelectedPage("thanks")}
-      />
-
-      <AnchorLink
-        href="#contact"
-        className={`${
-          selectedPage === "contact" ? selectedStyles : "bg-dark-grey"
-        } w-3 h-3 rounded-full`}
-        onClick={() => setSelectedPage("contact")}
       />
     </div>
   );

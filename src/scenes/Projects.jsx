@@ -11,8 +11,15 @@ const Projects = () => {
 
       const scrollTop =
         window.pageYOffset || document.documentElement.scrollTop;
-      if (scrollTop > 6200 && scrollTop < 7200) {
-        setScrollCount(scrollCount + 1);
+
+      console.log(window.outerWidth);
+      console.log(scrollTop);
+      if (scrollTop > 8000 && scrollTop < 8500) {
+        console.log("desktop");
+        setScrollCount(scrollCount + 3);
+      } else if (scrollTop > 6000 && scrollTop < 7000) {
+        console.log("laptop");
+        setScrollCount(scrollCount + 1.8);
       } else {
         setScrollCount(0);
       }

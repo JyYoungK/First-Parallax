@@ -1,7 +1,6 @@
 import Birds from "./scenes/Birds";
 import DotGroup from "./scenes/DotGroup";
 import MySkills from "./scenes/MySkills";
-import LineGradient from "./components/LineGradient";
 import Projects from "./scenes/Projects";
 import Contact from "./scenes/Contact";
 import { useEffect, useState } from "react";
@@ -154,11 +153,6 @@ function App() {
       {/* ----------- Third Content /Deer Page ----------- */}
       <div className="fixed w-full h-full top-0 left-0 deer"></div>
       <div className="deer_container">
-        <motion.div
-          margin="0 0 0 0"
-          amount="all"
-          onViewportEnter={() => setSelectedPage("projects")}
-        ></motion.div>
         <Projects />
       </div>
 
@@ -182,13 +176,6 @@ function App() {
           <Thanks />
           <Contact />
         </motion.div>
-        {/* <motion.div
-          margin="0 0 -200px 0"
-          amount="all"
-          onViewportEnter={() => setSelectedPage("contact")}
-        >
-          <Contact />
-        </motion.div> */}
       </div>
 
       {/* End */}
