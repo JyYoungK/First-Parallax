@@ -30,21 +30,19 @@ const MySkills = () => {
       column3Ref.current.style.transform = `translateY(${scrollTop}px)`;
       column5Ref.current.style.transform = `translateY(${scrollTop}px)`;
       column7Ref.current.style.transform = `translateY(${scrollTop}px)`;
-      columnLineRef.current.style.transform = `translateY(${scrollTop}px)`;
 
       //Moves Down
-      if (scrollTop > 2700 && scrollTop < 2900) {
+      if (scrollTop > 2730 && scrollTop < 2830) {
         skillRef.current.style.transform = `translateX(${
-          w / 100
+          w / 60
         }px) translateY(-${scrollTop}px) `;
       } else {
-        skillRef.current.style.transform = `translateX(${
-          scrollTop / 40
-        }px) translateY(-${scrollTop}px) `;
+        skillRef.current.style.transform = `translateX(${5000}px) translateY(-${scrollTop}px) `;
       }
       column2Ref.current.style.transform = `translateY(-${scrollTop}px)`;
       column4Ref.current.style.transform = `translateY(-${scrollTop}px)`;
       column6Ref.current.style.transform = `translateY(-${scrollTop}px)`;
+      columnLineRef.current.style.transform = `translateY(-${scrollTop}px)`;
     }
 
     window.addEventListener("scroll", handleScroll);
@@ -66,37 +64,65 @@ const MySkills = () => {
       </div>
 
       <div ref={column1Ref} className="ReactLogo" style={{ top: -2500 }}>
-        <img className="w-36 h-36" alt="ReactLogo" src={ReactLogo} />
+        <img
+          className="md:w-36 md:h-36 w-16 h-16"
+          alt="ReactLogo"
+          src={ReactLogo}
+        />
       </div>
 
       <div ref={column2Ref} className="ReduxLogo" style={{ top: 3100 }}>
-        <img className="w-36 h-36" alt="ReduxLogo" src={ReduxLogo} />
+        <img
+          className="md:w-36 md:h-36 w-16 h-16"
+          alt="ReduxLogo"
+          src={ReduxLogo}
+        />
       </div>
 
       <div ref={column3Ref} className="TailwindLogo" style={{ top: -2500 }}>
-        <img className="w-36 h-36" alt="TailwindLogo" src={TailwindLogo} />
+        <img
+          className="md:w-36 md:h-36 w-16 h-16"
+          alt="TailwindLogo"
+          src={TailwindLogo}
+        />
       </div>
 
       <div ref={column4Ref} className="JavascriptLogo" style={{ top: 3100 }}>
-        <img className="w-36 h-36" alt="JavascriptLogo" src={JavascriptLogo} />
+        <img
+          className="md:w-36 md:h-36 w-16 h-16"
+          alt="JavascriptLogo"
+          src={JavascriptLogo}
+        />
       </div>
 
       <div ref={column5Ref} className="TypescriptLogo" style={{ top: -2500 }}>
-        <img className="w-36 h-36" alt="TypescriptLogo" src={TypescriptLogo} />
+        <img
+          className="md:w-36 md:h-36 w-16 h-16"
+          alt="TypescriptLogo"
+          src={TypescriptLogo}
+        />
       </div>
 
       <div ref={column6Ref} className="NodeLogo" style={{ top: 3100 }}>
-        <img className="w-36 h-36" alt="NodeLogo" src={NodeLogo} />
+        <img
+          className="md:w-36 md:h-36 w-16 h-16"
+          alt="NodeLogo"
+          src={NodeLogo}
+        />
       </div>
 
       <div ref={column7Ref} className="PhotoshopLogo" style={{ top: -2500 }}>
-        <img className="w-36 h-36" alt="PhotoshopLogo" src={PhotoshopLogo} />
+        <img
+          className="md:w-36 md:h-36 w-16 h-16"
+          alt="PhotoshopLogo"
+          src={PhotoshopLogo}
+        />
       </div>
 
       <div
         ref={columnLineRef}
         className="fixed h-1.5 w-full left-0 bg-gradient-rainblue"
-        style={{ top: -2300 }}
+        style={{ top: 3250 }}
       ></div>
     </section>
   );
