@@ -17,7 +17,6 @@ const MySkills = () => {
   const column6Ref = useRef(null);
   const column7Ref = useRef(null);
   const columnLineRef = useRef(null);
-
   const w = window.outerWidth;
 
   useEffect(() => {
@@ -62,7 +61,6 @@ const MySkills = () => {
       >
         TECHNICAL SKILLS
       </div>
-
       <div ref={column1Ref} className="ReactLogo" style={{ top: -2500 }}>
         <img
           className="md:w-36 md:h-36 w-16 h-16"
@@ -70,7 +68,6 @@ const MySkills = () => {
           src={ReactLogo}
         />
       </div>
-
       <div ref={column2Ref} className="ReduxLogo" style={{ top: 3100 }}>
         <img
           className="md:w-36 md:h-36 w-16 h-16"
@@ -78,7 +75,6 @@ const MySkills = () => {
           src={ReduxLogo}
         />
       </div>
-
       <div ref={column3Ref} className="TailwindLogo" style={{ top: -2500 }}>
         <img
           className="md:w-36 md:h-36 w-16 h-16"
@@ -86,7 +82,6 @@ const MySkills = () => {
           src={TailwindLogo}
         />
       </div>
-
       <div ref={column4Ref} className="JavascriptLogo" style={{ top: 3100 }}>
         <img
           className="md:w-36 md:h-36 w-16 h-16"
@@ -94,7 +89,6 @@ const MySkills = () => {
           src={JavascriptLogo}
         />
       </div>
-
       <div ref={column5Ref} className="TypescriptLogo" style={{ top: -2500 }}>
         <img
           className="md:w-36 md:h-36 w-16 h-16"
@@ -102,7 +96,6 @@ const MySkills = () => {
           src={TypescriptLogo}
         />
       </div>
-
       <div ref={column6Ref} className="NodeLogo" style={{ top: 3100 }}>
         <img
           className="md:w-36 md:h-36 w-16 h-16"
@@ -110,7 +103,6 @@ const MySkills = () => {
           src={NodeLogo}
         />
       </div>
-
       <div ref={column7Ref} className="PhotoshopLogo" style={{ top: -2500 }}>
         <img
           className="md:w-36 md:h-36 w-16 h-16"
@@ -118,7 +110,6 @@ const MySkills = () => {
           src={PhotoshopLogo}
         />
       </div>
-
       <div
         ref={columnLineRef}
         className="fixed h-1.5 w-full left-0 bg-gradient-rainblue"

@@ -30,7 +30,7 @@
   background: url("./assets/fog.webp") bottom/100% repeat-x;
   opacity: 0.3;
   animation: moves 20s infinite linear;
-  z-index: 1000;
+  z-index: 110;
   pointer-events: none;
 }
 
@@ -42,7 +42,7 @@
 
 .dot_container {
   position: fixed;
-  z-index: 1100;
+  z-index: 120;
 }
 
 .moon {
@@ -55,7 +55,6 @@
   background-size: cover;
   background-position: center;
   z-index: 100;
-  pointer-events: none;
 }
 
 .temple {

@@ -105,7 +105,6 @@ const Contact = () => {
                   "Max length is 2000 char."}
               </p>
             )}
-
             <button
               className="p-5 bg-white font-semibold text-deep-blue mt-5 hover:bg-[#48ddd6] hover:text-white transition duration-500"
               type="submit"
