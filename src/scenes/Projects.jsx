@@ -140,14 +140,14 @@ const Projects = () => {
         data-prev-percentage="0"
       >
         <img
-          className="image"
+          className="image z-5000"
           alt="portfolio"
           src="https://i.ibb.co/kMw3GxM/318079798-707876150953305-3898617955148906755-n.png"
           draggable="false"
           onClick={() => openSpy()}
         />
         <img
-          className="image"
+          className="image z-5000"
           alt="portfolio"
           src={News}
           draggable="false"

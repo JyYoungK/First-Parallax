@@ -1,5 +1,5 @@
 import Birds from "./scenes/Birds";
-import DotGroup from "./scenes/DotGroup";
+import Navbar from "./scenes/Navbar";
 import MySkills from "./scenes/MySkills";
 import Projects from "./scenes/Projects";
 import Contact from "./scenes/Contact";
@@ -112,10 +112,7 @@ const App = () => {
   return (
     <div className="paralax hide-scrollbar">
       <div className="w-5/6 mx-auto md:h-full">
-        <DotGroup
-          selectedPage={selectedPage}
-          setSelectedPage={setSelectedPage}
-        />
+        <Navbar selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
         <motion.div
           margin="0 0 -200px 0"
           amount="all"

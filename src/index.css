@@ -26,12 +26,17 @@
   /* position: absolute; */
 }
 
+.dot_container {
+  position: fixed;
+  z-index: 120;
+}
+
 .fog {
-  background: url("./assets/fog.webp") bottom/100% repeat-x;
+  /* background: url("./assets/fog.webp") bottom/100% repeat-x;
   opacity: 0.3;
   animation: moves 20s infinite linear;
   z-index: 110;
-  pointer-events: none;
+  pointer-events: none; */
 }
 
 @keyframes moves {
@@ -40,21 +45,12 @@
   }
 }
 
-.dot_container {
-  position: fixed;
-  z-index: 120;
-}
-
-.moon {
-  background: url("./assets/moon.png") center/cover no-repeat;
-  pointer-events: none;
-}
-
 .forest {
   background: url("./assets/forest.png") bottom/100% no-repeat;
   background-size: cover;
   background-position: center;
   z-index: 100;
+  pointer-events: none;
 }
 
 .temple {
@@ -78,6 +74,13 @@
   background-size: cover;
   background-position: center;
   z-index: 70;
+  pointer-events: none;
+}
+
+.moon {
+  background: url("./assets/moon.png") center/cover no-repeat;
+  background-size: cover;
+  background-position: center;
   pointer-events: none;
 }
 
@@ -213,6 +216,7 @@
   top: 50%;
   transform: translate(0%, -50%);
   user-select: none; /* -- Prevent image highlighting -- */
+  pointer-events: auto;
 }
 
 .image-track > .image {
@@ -220,6 +224,7 @@
   height: 36vmin;
   object-fit: cover;
   object-position: 100% center;
+  pointer-events: auto;
 }
 
 .skill_container {

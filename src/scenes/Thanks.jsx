@@ -24,7 +24,10 @@ const Thanks = () => {
         <div className={`h-0.5 w-full bg-gradient-starblue`} />
         <div className="mt-10 text-2xl text-white">
           I hope you enjoyed the journey as much as I did. Images are from
-          <span className="ml-1 hover:text-blue " onClick={() => openSite()}>
+          <span
+            className="ml-1 hover:text-[#2CBCE9]"
+            onClick={() => openSite()}
+          >
             https://wallpaperaccess.com/
           </span>
           . I inspire to become a better developer & designer. I am always open

@@ -1,12 +1,24 @@
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import { AiFillHome } from "react-icons/ai";
 import { BsFillMoonFill } from "react-icons/bs";
-import { GiDeerHead, GiOwl } from "react-icons/gi";
+import { GiDeerHead, GiOwl, GiSpeaker, GiSpeakerOff } from "react-icons/gi";
+import React, { useState, useRef } from "react";
+import bgMusic from "../assets/bgm.mp3";
 
-const DotGroup = ({ selectedPage, setSelectedPage }) => {
+const Navbar = ({ selectedPage, setSelectedPage }) => {
   const selectedStyles = `relative  before:absolute before:w-12 before:h-12 before:rounded-full
     before:border-2 before:border-yellow before:left-[-50%] before:top-[-50%]`;
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useRef(null);
 
+  const togglePlay = () => {
+    if (isPlaying) {
+      audioRef.current.pause();
+    } else {
+      audioRef.current.play();
+    }
+    setIsPlaying(!isPlaying);
+  };
   return (
     <div className="flex flex-col gap-14 fixed top-[30%] right-7 z-5000">
       <AnchorLink
@@ -69,8 +81,22 @@ const DotGroup = ({ selectedPage, setSelectedPage }) => {
           }`}
         />
       </AnchorLink>
+      <div>
+        <audio ref={audioRef} src={bgMusic} />
+        {isPlaying ? (
+          <GiSpeaker
+            className={`w-7 h-7 rounded-full text-white bg-black`}
+            onClick={togglePlay}
+          />
+        ) : (
+          <GiSpeakerOff
+            className={`w-7 h-7 rounded-full text-white bg-black `}
+            onClick={togglePlay}
+          />
+        )}
+      </div>
     </div>
   );
 };
 
-export default DotGroup;
+export default Navbar;
