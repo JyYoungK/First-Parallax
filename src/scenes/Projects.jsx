@@ -14,10 +14,10 @@ const Projects = () => {
 
       console.log(window.outerWidth);
       console.log(scrollTop);
-      if (scrollTop > 8000 && scrollTop < 8500) {
+      if (scrollTop > 8000 && scrollTop < 8400) {
         console.log("desktop");
         setScrollCount(scrollCount + 3);
-      } else if (scrollTop > 6000 && scrollTop < 7000) {
+      } else if (scrollTop > 6350 && scrollTop < 7300) {
         console.log("laptop");
         setScrollCount(scrollCount + 1.8);
       } else {

@@ -10,9 +10,6 @@ module.exports = {
         5000: "5000",
       },
       colors: {
-        "deep-blue": "#010026",
-        blue: "#2CBCE9",
-        red: "#DC4492",
         yellow: "#FDCC49",
         grey: "#ededed",
         "dark-grey": "#757575",
@@ -25,10 +22,6 @@ module.exports = {
         "gradient-starblue":
           "linear-gradient(90deg,#e8f2f5 14.53%,#e267e4 39.36%,#48ddd6 117.73%)",
       }),
-      fontFamily: {
-        playfair: ["Playfair Display", "serif"],
-        opensans: ["Open Sans", "sans-serif"],
-      },
     },
     screens: {
       xs: "480px",
@@ -39,5 +32,4 @@ module.exports = {
       xl: "1700px",
     },
   },
-  plugins: [require("tailwind-scrollbar-hide")],
 };

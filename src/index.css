@@ -18,8 +18,15 @@ body,
   /* position: absolute; */
 }
 
-.scrollbar-hide::-webkit-scrollbar {
+/* Hide scrollbar for Chrome, Safari and Opera */
+.hide-scrollbar::-webkit-scrollbar {
   display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.hide-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 .fog {
@@ -257,9 +264,19 @@ body,
   }
 }
 
+.owlSpace {
+  position: relative;
+  margin-top: 55vh;
+}
+
 .moon_container {
   position: relative;
   max-width: 1140px;
   margin: 0 auto;
-  margin-top: 500vh;
+  margin-top: 740vh;
+}
+
+.moonSpace {
+  position: relative;
+  height: 100vh;
 }

@@ -6,7 +6,7 @@ const Thanks = () => {
   }
 
   return (
-    <section id="thanks" className="pt-32 pb-16">
+    <section className="mt-96 pb-16">
       {/* HEADING */}
       <motion.div
         className="md:w-3/5 text-center md:text-left"

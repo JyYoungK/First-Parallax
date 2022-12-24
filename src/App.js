@@ -10,6 +10,7 @@ import { motion } from "framer-motion";
 function App() {
   const [selectedPage, setSelectedPage] = useState("home");
   const [isTopOfPage, setIsTopOfPage] = useState(true);
+  const [hideOwl, setHideOwl] = useState(true);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -60,11 +61,6 @@ function App() {
     document.getElementsByClassName(
       "fog"
     )[0].style = `transform: translate3d(${hr}px,0,0) scale(${z_forest})`;
-    document.getElementsByClassName("owl")[0].style.display = "none";
-
-    // document.getElementsByClassName(
-    //   "owl"
-    // )[0].style = `transform: translate3d(${hr_2}px,0,0) scale(${z_1})`;
 
     //forest starts scaling, others don't
     document.getElementsByClassName(
@@ -78,6 +74,7 @@ function App() {
       document.getElementsByClassName(
         "deer"
       )[0].style = `transform: translate3d(${hr_3}px,0,0) scale(${z_8})`;
+      setHideOwl(true);
     }
 
     if (z_forest <= 7 && z_forest > 4) {
@@ -88,22 +85,20 @@ function App() {
       document.getElementsByClassName(
         "deer"
       )[0].style = `transform: translate3d(${hr_3}px,0,0) scale(${z_7})`;
+      setHideOwl(true);
     }
 
     if (z_forest > 7) {
       //start scaling fast after forest content finishes
+      setHideOwl(false);
       document.getElementsByClassName("deer")[0].style.display = "none";
       document.getElementsByClassName(
         "owl"
       )[0].style = `transform: translate3d(${hr_3}px,0,0) scale(${z_8})`;
     }
 
-    if (z_forest > 10) {
-      document.getElementsByClassName(
-        "deer"
-      )[0].style = `transform: translate3d(${hr_3}px,0,0) scale(${z_1})`;
-      document.getElementsByClassName("owl")[0].style.display = "none";
-
+    if (z_forest > 13) {
+      setHideOwl(true);
       document.getElementsByClassName(
         "moon"
       )[0].style = `transform: scale(${z_9})`;
@@ -115,7 +110,7 @@ function App() {
   };
 
   return (
-    <div className="paralax scrollbar-hide">
+    <div className="paralax hide-scrollbar">
       <div className="w-5/6 mx-auto md:h-full">
         <DotGroup
           selectedPage={selectedPage}
@@ -151,7 +146,7 @@ function App() {
           <motion.div
             margin="0 0 0 0"
             amount="all"
-            onViewportEnter={() => setSelectedPage("skills")}
+            onViewportEnter={() => setSelectedPage("deer")}
           >
             <MySkills />
           </motion.div>
@@ -160,12 +155,17 @@ function App() {
 
       {/* ----------- Fourth Content /Deer Page ----------- */}
       <div className="fixed w-full h-full top-0 left-0 deer"></div>
-      <div className="fixed w-full h-full top-0 left-0 owl"></div>
       <div className="deer_container">
         <Projects />
       </div>
 
       {/* ----------- Last Content /Moon Page ----------- */}
+      <div className="owlSpace" id="owl"></div>
+      <div
+        className={`fixed w-full h-full top-0 left-0 owl ${
+          hideOwl ? "hidden" : "block"
+        }`}
+      ></div>
 
       <div className="fixed w-full h-full top-0 left-0 moon">
         <div id="stars"></div>
@@ -178,13 +178,14 @@ function App() {
       </div>
       <div className="moon_container">
         <motion.div
-          margin="0 0 -200px 0"
+          margin="0 0 0 0"
           amount="all"
-          onViewportEnter={() => setSelectedPage("thanks")}
+          onViewportEnter={() => setSelectedPage("moon")}
         >
-          <Thanks />
-          <Contact />
+          <div className="moonSpace" id="moon"></div>
         </motion.div>
+        <Thanks />
+        <Contact />
       </div>
 
       {/* End */}
