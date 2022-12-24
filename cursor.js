@@ -55,11 +55,11 @@
     },
     //Below code will make the cursor to change from x-y axis to mouse position
     reset: function (tx, ty) {
+      this.life = 150;
       this.x = tx;
       this.y = ty;
       //   this.vx = Math.random() * 4 - 1;
       //   this.vy = Math.random() * 4 - 1;
-      this.life = 150;
       //   this.a = 1;
       //   this.g = Math.round(255 * (this.x / WIDTH));
       //   this.b = Math.round(255 * (this.y / HEIGHT));
