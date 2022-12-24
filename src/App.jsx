@@ -97,7 +97,7 @@ const App = () => {
       )[0].style = `transform: translate3d(${hr_3}px,0,0) scale(${z_8})`;
     }
 
-    if (z_forest > 13) {
+    if (z_forest > 14) {
       setHideOwl(true);
       document.getElementsByClassName(
         "moon"
@@ -141,7 +141,7 @@ const App = () => {
 
       {/* ----------- Second Content Skills Page ----------- */}
       <div className="fixed w-full h-full top-0 left-0 temple"></div>
-      <div className="temple_container">
+      <div className="skill_container">
         <div className="md:h-full">
           <motion.div
             margin="0 0 0 0"
@@ -153,21 +153,32 @@ const App = () => {
           <MySkills />
         </div>
       </div>
+      <div className="fixed w-full h-full top-0 left-0 deer"></div>
 
       {/* ----------- Third Content Projects Page ----------- */}
-      <div className="fixed w-full h-full top-0 left-0 deer"></div>
-      <div className="deer_container">
-        <Projects />
-      </div>
-
-      {/* ----------- Last Content Thanks Page ----------- */}
-      <div className="owlSpace" id="owl"></div>
       <div
         className={`fixed w-full h-full top-0 left-0 owl ${
           hideOwl ? "hidden" : "block"
         }`}
       ></div>
+      <div className="owl_container mt-5">
+        <div className="md:h-full">
+          <motion.div
+            margin="0 0 0 0"
+            amount="all"
+            onViewportEnter={() => setSelectedPage("owl")}
+          >
+            <div className="owlSpace" id="owl"></div>
+          </motion.div>
+        </div>
+      </div>
+      <div className="project_container">
+        <div className="md:h-full">
+          <Projects />
+        </div>
+      </div>
 
+      {/* ----------- Last Content Thanks Page ----------- */}
       <div className="fixed w-full h-full top-0 left-0 moon">
         <div id="stars"></div>
         <div id="stars2"></div>
@@ -178,13 +189,17 @@ const App = () => {
         <div id="stars7"></div>
       </div>
       <div className="moon_container">
-        <motion.div
-          margin="0 0 0 0"
-          amount="all"
-          onViewportEnter={() => setSelectedPage("moon")}
-        >
-          <div className="moonSpace" id="moon"></div>
-        </motion.div>
+        <div className="md:h-full">
+          <motion.div
+            margin="0 0 0 0"
+            amount="all"
+            onViewportEnter={() => setSelectedPage("moon")}
+          >
+            <div className="moonSpace" id="moon"></div>
+          </motion.div>
+        </div>
+      </div>
+      <div className="thanks_container">
         <Thanks />
         <Contact />
       </div>

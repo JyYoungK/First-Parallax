@@ -198,14 +198,6 @@
   left: 82%;
 }
 
-.deer_container {
-  position: relative;
-  max-width: 1140px;
-  margin: 0 auto;
-  margin-top: 450vh;
-  z-index: 91;
-}
-
 .sliding_project {
   height: 100vh;
   width: 100vw;
@@ -230,10 +222,57 @@
   object-position: 100% center;
 }
 
+.skill_container {
+  position: relative;
+  max-width: 1140px;
+  margin: 0 auto;
+  z-index: 91;
+  margin-top: 250vh;
+  margin-bottom: 300vh;
+  height: 100vh;
+}
+
+.deerSpace {
+  position: relative;
+  margin-top: 250vh;
+  height: 100vh;
+  /* border: 0.5rem outset pink;
+  outline: 0.5rem solid khaki;
+  box-shadow: 0 0 0 2rem skyblue;
+  border-radius: 12px;
+  font: bold 1rem sans-serif;
+  margin: 2rem;
+  padding: 1rem;
+  outline-offset: 0.5rem; */
+}
+
+.owl_container {
+  position: relative;
+  max-width: 100%;
+  z-index: 91;
+  margin-top: 250px;
+  height: 100vh;
+  /* border: 0.5rem outset pink;
+  outline: 0.5rem solid khaki;
+  box-shadow: 0 0 0 2rem skyblue;
+  border-radius: 12px;
+  font: bold 1rem sans-serif;
+  margin: 2rem;
+  padding: 1rem;
+  outline-offset: 0.5rem; */
+}
+
+.project_container {
+  position: relative;
+  margin: 0 auto;
+  z-index: 91;
+  height: 150vh;
+}
+
 .projectDesc {
   position: absolute;
-  right: 500px;
-  top: 200px;
+  left: 500px;
+  top: 250px;
   transform-style: preserve-3d;
   animation: rotate-animation 8s linear infinite;
 }
@@ -246,9 +285,9 @@
 
 .projectDesc span {
   position: absolute;
-  left: 400px;
+  left: 50px;
   right: 400px;
-  top: 0;
+  top: 500px;
 }
 
 @keyframes rotate-animation {
@@ -260,19 +299,23 @@
   }
 }
 
-.owlSpace {
-  position: relative;
-  margin-top: 55vh;
-}
-
 .moon_container {
   position: relative;
   max-width: 1140px;
   margin: 0 auto;
-  margin-top: 740vh;
+  margin-top: 700vh;
+  z-index: 300;
 }
 
 .moonSpace {
   position: relative;
   height: 100vh;
+}
+
+.thanks_container {
+  position: relative;
+  max-width: 1140px;
+  margin: 0 auto;
+  margin-top: 100vh;
+  z-index: 300;
 }

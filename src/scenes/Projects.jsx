@@ -12,10 +12,13 @@ const Projects = () => {
       const scrollTop =
         window.pageYOffset || document.documentElement.scrollTop;
 
-      if (scrollTop > 8000 && scrollTop < 8400) {
+      //Gap needs to be at least 600px
+      if (scrollTop > 9050 && scrollTop < 9650) {
         console.log("desktop");
         setScrollCount(scrollCount + 3);
-      } else if (scrollTop > 6350 && scrollTop < 7300) {
+      }
+      //Gap Needs to be at least 300px
+      else if (scrollTop > 7000 && scrollTop < 7600) {
         console.log("laptop");
         setScrollCount(scrollCount + 1.8);
       } else {
