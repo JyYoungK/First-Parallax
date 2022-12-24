@@ -7,7 +7,6 @@ const Thanks = () => {
 
   return (
     <section className="mt-96 pb-16">
-      {/* HEADING */}
       <motion.div
         className="md:w-3/5 text-center md:text-left"
         initial="hidden"

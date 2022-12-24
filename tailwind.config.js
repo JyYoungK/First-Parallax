@@ -1,7 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{html,js,jsx}"],
-  mode: "jit",
+  content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
   theme: {
     extend: {
       zIndex: {
@@ -22,14 +21,6 @@ module.exports = {
         "gradient-starblue":
           "linear-gradient(90deg,#e8f2f5 14.53%,#e267e4 39.36%,#48ddd6 117.73%)",
       }),
-    },
-    screens: {
-      xs: "480px",
-      ss: "620px",
-      sm: "768px",
-      md: "1060px",
-      lg: "1200px",
-      xl: "1700px",
     },
   },
 };

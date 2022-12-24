@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-import News from "../assets/news2.png";
+import News from "../assets/news.png";
 
 const Projects = () => {
   const trackRef = useRef(null);
@@ -12,8 +12,6 @@ const Projects = () => {
       const scrollTop =
         window.pageYOffset || document.documentElement.scrollTop;
 
-      console.log(window.outerWidth);
-      console.log(scrollTop);
       if (scrollTop > 8000 && scrollTop < 8400) {
         console.log("desktop");
         setScrollCount(scrollCount + 3);
@@ -50,15 +48,12 @@ const Projects = () => {
     const circle = circleRef.current;
     const text = circle.dataset.text;
     const characters = text.split("");
-
     const deltaAngle = 360 / characters.length;
     const distanceFromCenter = 256;
 
     characters.forEach((character, index) => {
-      console.log(index);
       const span = document.createElement("span");
       span.innerText = character;
-
       const rotateY = `rotateY(${index * deltaAngle}deg)`;
       const translateZ = `translateZ(${distanceFromCenter}px)`;
       span.style.transform = `${rotateY} ${translateZ}`;
@@ -162,7 +157,6 @@ const Projects = () => {
           draggable="false"
         />
       </div>
-
       <div
         className="projectDesc md:text-8xl font-black  text-4xl text-[#80b0ce] "
         ref={circleRef}

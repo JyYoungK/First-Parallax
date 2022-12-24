@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import Thanks from "./scenes/Thanks";
 import { motion } from "framer-motion";
 
-function App() {
+const App = () => {
   const [selectedPage, setSelectedPage] = useState("home");
   const [isTopOfPage, setIsTopOfPage] = useState(true);
   const [hideOwl, setHideOwl] = useState(true);
@@ -127,9 +127,9 @@ function App() {
 
       {/* ----------- Show Fog only on Desktop -----------  */}
 
-      <div className="hidden sm:block fixed w-full h-full top-0 left-0 fog"></div>
+      <div className="hidden md:block fixed w-full h-full top-0 left-0 fog"></div>
 
-      {/* ----------- First Content Title/Forest Page -----------  */}
+      {/* ----------- First Content Home Page -----------  */}
       <div className="fixed w-full h-full top-0 left-0 forest"></div>
 
       <div className={`forest_container z-91`}>
@@ -139,7 +139,7 @@ function App() {
         </div>
       </div>
 
-      {/* ----------- Second Content /Temple Page ----------- */}
+      {/* ----------- Second Content Skills Page ----------- */}
       <div className="fixed w-full h-full top-0 left-0 temple"></div>
       <div className="temple_container">
         <div className="md:h-full">
@@ -148,18 +148,19 @@ function App() {
             amount="all"
             onViewportEnter={() => setSelectedPage("deer")}
           >
-            <MySkills />
+            <div className="deerSpace" id="deer"></div>
           </motion.div>
+          <MySkills />
         </div>
       </div>
 
-      {/* ----------- Fourth Content /Deer Page ----------- */}
+      {/* ----------- Third Content Projects Page ----------- */}
       <div className="fixed w-full h-full top-0 left-0 deer"></div>
       <div className="deer_container">
         <Projects />
       </div>
 
-      {/* ----------- Last Content /Moon Page ----------- */}
+      {/* ----------- Last Content Thanks Page ----------- */}
       <div className="owlSpace" id="owl"></div>
       <div
         className={`fixed w-full h-full top-0 left-0 owl ${
@@ -191,6 +192,6 @@ function App() {
       {/* End */}
     </div>
   );
-}
+};
 
 export default App;
