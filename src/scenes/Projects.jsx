@@ -1,5 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
-import News from "../assets/news.png";
+import spy from "../assets/spy.webp";
+import news from "../assets/newspaper.webp";
+import santaAI from "../assets/santaAI.webp";
 
 const Projects = () => {
   const trackRef = useRef(null);
@@ -69,11 +71,11 @@ const Projects = () => {
     window.open("http://spyproject.netlify.com/", "_blank");
   }
   function openNews() {
-    window.open("https://newsproject-jyyoungk.vercel.app/", "_blank");
+    window.open("https://news-project-junyoung.vercel.app/", "_blank");
   }
-  // function openAI() {
-  //   window.location.href = 'https://www.example.com';
-  // }
+  function openAI() {
+    window.open("https://santaai.vercel.app/", "_blank");
+  }
   // const handleMouseClick = (e) => {
   //   //Creating a function that saves the mouse position when clicked
   //   trackRef.current.setAttribute("data-mouse-down-at", e.clientX.toString());
@@ -140,24 +142,25 @@ const Projects = () => {
         data-prev-percentage="0"
       >
         <img
-          className="image z-5000"
+          className="image z-5000 cursor-pointer hover:scale-125"
           alt="portfolio"
-          src="https://i.ibb.co/kMw3GxM/318079798-707876150953305-3898617955148906755-n.png"
+          src={spy}
           draggable="false"
           onClick={() => openSpy()}
         />
         <img
-          className="image z-5000"
+          className="image z-5000 cursor-pointer hover:scale-125"
           alt="portfolio"
-          src={News}
+          src={news}
           draggable="false"
           onClick={() => openNews()}
         />
         <img
-          className="image"
+          className="image z-5000 cursor-pointer hover:scale-125"
           alt="portfolio"
-          src="https://i.ibb.co/mhgtvPQ/AI-HERO-58306268c6f4b659459f5b7b2dd3e8a5.jpg"
+          src={santaAI}
           draggable="false"
+          onClick={() => openAI()}
         />
       </div>
       <div

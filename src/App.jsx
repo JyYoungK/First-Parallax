@@ -44,7 +44,7 @@ const App = () => {
     const z_1 = 1 + (w / 1000) * p_b;
     const z_2 = 1 + (w / 10000) * p_b;
     const z_3 = 1 + (w / 90000) * p_b;
-    const z_4 = 1 + w * 0.00001 * p_b;
+    const z_tree = 1 + w * 0.00002 * p_b;
     const z_forest = 1 + w * 0.000008 * p_b;
     const z_5 = 1 + w * 0.000004 * p_b;
     const z_6 = 1 + w * 0.000001 * p_b;
@@ -66,6 +66,12 @@ const App = () => {
     document.getElementsByClassName(
       "forest"
     )[0].style = `transform: translate3d(${hr}px,0,0) scale(${z_forest})`;
+    document.getElementsByClassName(
+      "treeLeft"
+    )[0].style = `transform: translate3d(${hr}px,0,0) scale(${z_tree})`;
+    document.getElementsByClassName(
+      "treeRight"
+    )[0].style = `transform: translate3d(${hr}px,0,0) scale(${z_tree})`;
 
     if (z_forest <= 4) {
       document.getElementsByClassName(
@@ -89,12 +95,11 @@ const App = () => {
     }
 
     if (z_forest > 7) {
-      //start scaling fast after forest content finishes
       setHideOwl(false);
-      document.getElementsByClassName("deer")[0].style.display = "none";
       document.getElementsByClassName(
         "owl"
       )[0].style = `transform: translate3d(${hr_3}px,0,0) scale(${z_8})`;
+      document.getElementsByClassName("deer")[0].style.display = "none";
     }
 
     if (z_forest > 14) {
@@ -128,6 +133,8 @@ const App = () => {
 
       {/* ----------- First Content Home Page -----------  */}
       <div className="fixed w-full h-full top-0 left-0 forest"></div>
+      <div className="fixed w-full h-full top-0 left-0 treeLeft"></div>
+      <div className="fixed w-full h-full top-0 left-0 treeRight"></div>
 
       <div className={`forest_container z-91`}>
         <div className="forest-header hover:filter hover:saturate-200 transition duration-500">

@@ -1,11 +1,11 @@
 import { useEffect, useRef } from "react";
-import ReactLogo from "../assets/logo/ReactLogo.png";
-import ReduxLogo from "../assets/logo/ReduxLogo.png";
-import TailwindLogo from "../assets/logo/TailwindLogo.png";
-import JavascriptLogo from "../assets/logo/JavascriptLogo.png";
-import TypescriptLogo from "../assets/logo/TypescriptLogo.png";
-import NodeLogo from "../assets/logo/NodeLogo.png";
-import PhotoshopLogo from "../assets/logo/PhotoshopLogo.png";
+import ReactLogo from "../assets/logo/ReactLogo.webp";
+import ReduxLogo from "../assets/logo/ReduxLogo.webp";
+import TailwindLogo from "../assets/logo/TailwindLogo.webp";
+import JavascriptLogo from "../assets/logo/JavascriptLogo.webp";
+import TypescriptLogo from "../assets/logo/TypescriptLogo.webp";
+import NodeLogo from "../assets/logo/NodeLogo.webp";
+import PhotoshopLogo from "../assets/logo/PhotoshopLogo.webp";
 
 const MySkills = () => {
   const skillRef = useRef(null);
@@ -50,12 +50,12 @@ const MySkills = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   });
-
+  // border-4 border-red-600
   return (
-    <section id="skills" className="pt-10 pb-24 ">
+    <section id="skills" className="pt-10 pb-24">
       <div
         ref={skillRef}
-        className="skillsHeader fixed left-1/4 -translate-y-1/2 -translate-x-1/2
+        className="skillsHeader
          md:text-8xl text-4xl ml:48"
         style={{ top: 2900, color: "#ffffff" }}
       >
