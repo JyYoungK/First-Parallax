@@ -6,7 +6,7 @@ import JavascriptLogo from "../assets/logo/JavascriptLogo.webp";
 import TypescriptLogo from "../assets/logo/TypescriptLogo.webp";
 import NodeLogo from "../assets/logo/NodeLogo.webp";
 import PhotoshopLogo from "../assets/logo/PhotoshopLogo.webp";
-a;
+
 const MySkills = () => {
   const skillRef = useRef(null);
   const column1Ref = useRef(null);
