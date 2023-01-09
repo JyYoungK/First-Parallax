@@ -129,7 +129,7 @@ const App = () => {
 
       {/* ----------- Show Fog only on Desktop -----------  */}
 
-      <div className="hidden md:block fixed w-full h-full top-0 left-0 fog"></div>
+      {/* <div className="hidden lg:block fixed w-full h-full top-0 left-0 fog"></div> */}
 
       {/* ----------- First Content Home Page -----------  */}
       <div className="fixed w-full h-full top-0 left-0 forest"></div>
