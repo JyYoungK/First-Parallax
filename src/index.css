@@ -31,7 +31,7 @@
   z-index: 120;
 }
 
-.fog {
+/* .fog {
   background: url("./assets/fog.webp") bottom/100% repeat-x;
   opacity: 0.3;
   animation: moves 20s infinite linear;
@@ -43,7 +43,7 @@
   to {
     background-position: -100vw 0%;
   }
-}
+} */
 
 .forest {
   background: url("./assets/forest.webp") bottom/100% no-repeat;
@@ -156,7 +156,7 @@
 
 .skillsHeader {
   position: fixed;
-  left: 25%;
+  left: 23%;
   margin-top: 10vh;
   font-size: 40px;
   font-weight: 600;
@@ -226,10 +226,11 @@
 }
 
 .image-track {
-  display: flex;
+  display: inline-flex;
+  align-items: center;
   gap: 4vmin;
   position: absolute;
-  left: 45%;
+  left: 25%;
   top: 50%;
   transform: translate(0%, -50%);
   user-select: none; /* -- Prevent image highlighting -- */
@@ -292,7 +293,7 @@
 .projectDesc {
   position: absolute;
   left: 500px;
-  top: 250px;
+  top: 270px;
   transform-style: preserve-3d;
   animation: rotate-animation 8s linear infinite;
 }

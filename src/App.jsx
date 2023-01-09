@@ -58,9 +58,9 @@ const App = () => {
     const hr_3 = (w / 1500000) * p_b;
     const hr_4 = (w / 15000000) * p_b;
 
-    document.getElementsByClassName(
-      "fog"
-    )[0].style = `transform: translate3d(${hr}px,0,0) scale(${z_forest})`;
+    // document.getElementsByClassName(
+    //   "fog"
+    // )[0].style = `transform: translate3d(${hr}px,0,0) scale(${z_forest})`;
 
     //forest starts scaling, others don't
     document.getElementsByClassName(
@@ -72,6 +72,9 @@ const App = () => {
     document.getElementsByClassName(
       "treeRight"
     )[0].style = `transform: translate3d(${hr}px,0,0) scale(${z_tree})`;
+    document.getElementsByClassName(
+      "moon"
+    )[0].style = `transform: scale(${z_10})`;
 
     if (z_forest <= 4) {
       document.getElementsByClassName(
@@ -104,13 +107,6 @@ const App = () => {
 
     if (z_forest > 14) {
       setHideOwl(true);
-      document.getElementsByClassName(
-        "moon"
-      )[0].style = `transform: scale(${z_9})`;
-    } else {
-      document.getElementsByClassName(
-        "moon"
-      )[0].style = `transform: scale(${z_10})`;
     }
   };
 
