@@ -1,6 +1,21 @@
 import { motion } from "framer-motion";
+import LinkedinLogo from "../assets/logo/LinkedinLogo.png";
+import GithubLogo from "../assets/logo/GithubLogo.webp";
+import GmailLogo from "../assets/logo/GmailLogo.webp";
+import React, { useState } from "react";
 
 const Thanks = () => {
+  const [copied, setCopied] = useState(false);
+
+  function handleClick() {
+    navigator.clipboard.writeText("johnnykang1204@gmail.com");
+    setCopied(true);
+
+    setTimeout(() => {
+      setCopied(false);
+    }, 2000);
+  }
+
   function openSite() {
     window.open("https://wallpaperaccess.com/", "_blank");
   }
@@ -36,6 +51,39 @@ const Thanks = () => {
           to contact me.
         </div>
       </motion.div>
+      <div className="flex justify-center md:justify-start my-10 gap-7">
+        <a
+          href="https://www.linkedin.com/in/johnny-kang-ab689368/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <img
+            className="md:w-10 md:h-10 w-8 h-8"
+            alt="linkedin-link"
+            src={LinkedinLogo}
+          />
+        </a>
+        <a href="https://github.com/JyYoungK" target="_blank" rel="noreferrer">
+          <img
+            className="md:w-10 md:h-10 w-8 h-8"
+            alt="github-link"
+            src={GithubLogo}
+          />
+        </a>
+        <a onClick={handleClick}>
+          <img
+            className="md:w-10 md:h-10 w-8 h-8"
+            alt="email-link"
+            src={GmailLogo}
+          />
+          {copied && (
+            <span className="bg-green-500 p-2 rounded-lg text-white">
+              {" "}
+              Email Copied!
+            </span>
+          )}
+        </a>
+      </div>
     </section>
   );
 };

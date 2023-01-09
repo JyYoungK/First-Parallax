@@ -30,7 +30,7 @@ const Contact = () => {
       >
         <div>
           <p className="font-playfair font-semibold text-4xl">
-            <span className="text-white">CONTACT ME</span>
+            <span className="text-white">QUICK CONTACT</span>
           </p>
         </div>
       </motion.div>
