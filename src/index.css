@@ -293,7 +293,7 @@
 .projectDesc {
   position: absolute;
   left: 500px;
-  top: 270px;
+  top: 450px;
   transform-style: preserve-3d;
   animation: rotate-animation 8s linear infinite;
 }

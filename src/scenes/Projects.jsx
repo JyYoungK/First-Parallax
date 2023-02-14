@@ -164,7 +164,7 @@ const Projects = () => {
         />
       </div>
       <div
-        className="projectDesc md:text-8xl font-black  text-4xl text-[#80b0ce] "
+        className="projectDesc md:text-8xl font-black text-4xl text-[#80b0ce] "
         ref={circleRef}
         data-text="2023 PROJECTS"
       ></div>
