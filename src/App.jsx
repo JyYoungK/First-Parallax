@@ -6,11 +6,14 @@ import Contact from "./scenes/Contact";
 import { useEffect, useState } from "react";
 import Thanks from "./scenes/Thanks";
 import { motion } from "framer-motion";
+import { useMediaQuery } from "react-responsive";
+import "./notfound.css";
 
 const App = () => {
   const [selectedPage, setSelectedPage] = useState("home");
   const [isTopOfPage, setIsTopOfPage] = useState(true);
   const [hideOwl, setHideOwl] = useState(true);
+  const isMd = useMediaQuery({ minWidth: 768 });
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -111,100 +114,130 @@ const App = () => {
   };
 
   return (
-    <div className="paralax hide-scrollbar">
-      <div className="w-5/6 mx-auto md:h-full">
-        <Navbar selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
-        <motion.div
-          margin="0 0 -200px 0"
-          amount="all"
-          onViewportEnter={() => setSelectedPage("home")}
-        >
-          <Birds />
-        </motion.div>
-      </div>
+    <div>
+      {isMd ? (
+        <div className="paralax hide-scrollbar">
+          <div className="w-5/6 mx-auto md:h-full">
+            <Navbar
+              selectedPage={selectedPage}
+              setSelectedPage={setSelectedPage}
+            />
+            <motion.div
+              margin="0 0 -200px 0"
+              amount="all"
+              onViewportEnter={() => setSelectedPage("home")}
+            >
+              <Birds />
+            </motion.div>
+          </div>
 
-      {/* ----------- Show Fog only on Desktop -----------  */}
+          {/* ----------- Show Fog only on Desktop -----------  */}
 
-      {/* <div className="hidden lg:block fixed w-full h-full top-0 left-0 fog"></div> */}
+          {/* <div className="hidden lg:block fixed w-full h-full top-0 left-0 fog"></div> */}
 
-      {/* ----------- First Content Home Page -----------  */}
-      <div className="fixed w-full h-full top-0 left-0 forest"></div>
-      <div className="fixed w-full h-full top-0 left-0 treeLeft"></div>
-      <div className="fixed w-full h-full top-0 left-0 treeRight"></div>
+          {/* ----------- First Content Home Page -----------  */}
+          <div className="fixed w-full h-full top-0 left-0 forest"></div>
+          <div className="fixed w-full h-full top-0 left-0 treeLeft"></div>
+          <div className="fixed w-full h-full top-0 left-0 treeRight"></div>
 
-      <div className={`forest_container z-91`}>
-        <div className="forest-header hover:filter hover:saturate-200 transition duration-500">
-          <div className="md:text-8xl text-4xl"> Junyoung Kang</div>
-          <div className="md:text-4xl"> Frontend Developer / Web Designer</div>
+          <div className={`forest_container z-91`}>
+            <div className="forest-header hover:filter hover:saturate-200 transition duration-500">
+              <div className="md:text-8xl text-4xl"> Junyoung Kang</div>
+              <div className="md:text-4xl">
+                {" "}
+                Frontend Developer / Web Designer
+              </div>
+            </div>
+          </div>
+
+          {/* ----------- Second Content Skills Page ----------- */}
+          <div className="fixed w-full h-full top-0 left-0 temple"></div>
+          <div className="skill_container">
+            <div className="md:h-full">
+              <motion.div
+                margin="0 0 0 0"
+                amount="all"
+                onViewportEnter={() => setSelectedPage("deer")}
+              >
+                <div className="deerSpace" id="deer"></div>
+              </motion.div>
+              <MySkills />
+            </div>
+          </div>
+          <div className="fixed w-full h-full top-0 left-0 deer"></div>
+
+          {/* ----------- Third Content Projects Page ----------- */}
+          <div
+            className={`fixed w-full h-full top-0 left-0 owl ${
+              hideOwl ? "hidden" : "block"
+            }`}
+          ></div>
+          <div className="owl_container mt-5">
+            <div className="md:h-full">
+              <motion.div
+                margin="0 0 0 0"
+                amount="all"
+                onViewportEnter={() => setSelectedPage("owl")}
+              >
+                <div className="owlSpace" id="owl"></div>
+              </motion.div>
+            </div>
+          </div>
+          <div className="project_container">
+            <div className="md:h-full">
+              <Projects />
+            </div>
+          </div>
+
+          {/* ----------- Last Content Thanks Page ----------- */}
+          <div className="fixed w-full h-full top-0 left-0 moon">
+            <div id="stars"></div>
+            <div id="stars2"></div>
+            <div id="stars3"></div>
+            <div id="stars4"></div>
+            <div id="stars5"></div>
+            <div id="stars6"></div>
+            <div id="stars7"></div>
+          </div>
+          <div className="moon_container">
+            <div className="md:h-full">
+              <motion.div
+                margin="0 0 0 0"
+                amount="all"
+                onViewportEnter={() => setSelectedPage("moon")}
+              >
+                <div className="moonSpace" id="moon"></div>
+              </motion.div>
+            </div>
+          </div>
+          <div className="thanks_container">
+            <Thanks />
+            <Contact />
+          </div>
+
+          {/* End */}
         </div>
-      </div>
-
-      {/* ----------- Second Content Skills Page ----------- */}
-      <div className="fixed w-full h-full top-0 left-0 temple"></div>
-      <div className="skill_container">
-        <div className="md:h-full">
-          <motion.div
-            margin="0 0 0 0"
-            amount="all"
-            onViewportEnter={() => setSelectedPage("deer")}
-          >
-            <div className="deerSpace" id="deer"></div>
-          </motion.div>
-          <MySkills />
+      ) : (
+        <div class="notfound-flex-container">
+          <div class="notfound-text-center">
+            <h1>
+              <span class="notfound-fade-in" id="notfound-digit1">
+                4
+              </span>
+              <span class="notfound-fade-in" id="notfound-digit2">
+                0
+              </span>
+              <span class="notfound-fade-in" id="notfound-digit3">
+                4
+              </span>
+            </h1>
+            <h3 class="notfound-fadeIn">
+              THIS PAGE CANNOT BE LOADED FROM A MOBILE/TABLET
+            </h3>
+            <h3 class="notfound-fadeIn">PLEASE RE-VISIT FROM LAPTOP OR PC</h3>
+          </div>
         </div>
-      </div>
-      <div className="fixed w-full h-full top-0 left-0 deer"></div>
-
-      {/* ----------- Third Content Projects Page ----------- */}
-      <div
-        className={`fixed w-full h-full top-0 left-0 owl ${
-          hideOwl ? "hidden" : "block"
-        }`}
-      ></div>
-      <div className="owl_container mt-5">
-        <div className="md:h-full">
-          <motion.div
-            margin="0 0 0 0"
-            amount="all"
-            onViewportEnter={() => setSelectedPage("owl")}
-          >
-            <div className="owlSpace" id="owl"></div>
-          </motion.div>
-        </div>
-      </div>
-      <div className="project_container">
-        <div className="md:h-full">
-          <Projects />
-        </div>
-      </div>
-
-      {/* ----------- Last Content Thanks Page ----------- */}
-      <div className="fixed w-full h-full top-0 left-0 moon">
-        <div id="stars"></div>
-        <div id="stars2"></div>
-        <div id="stars3"></div>
-        <div id="stars4"></div>
-        <div id="stars5"></div>
-        <div id="stars6"></div>
-        <div id="stars7"></div>
-      </div>
-      <div className="moon_container">
-        <div className="md:h-full">
-          <motion.div
-            margin="0 0 0 0"
-            amount="all"
-            onViewportEnter={() => setSelectedPage("moon")}
-          >
-            <div className="moonSpace" id="moon"></div>
-          </motion.div>
-        </div>
-      </div>
-      <div className="thanks_container">
-        <Thanks />
-        <Contact />
-      </div>
-
-      {/* End */}
+      )}
     </div>
   );
 };

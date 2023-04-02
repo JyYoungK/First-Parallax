@@ -4,78 +4,80 @@ import news from "../assets/newspaper.webp";
 import santaAI from "../assets/santaAI.webp";
 
 const Projects = () => {
-  const trackRef = useRef(null);
-  const [scrollCount, setScrollCount] = useState(0);
+  // const trackRef = useRef(null);
+  // const [scrollCount, setScrollCount] = useState(0);
 
-  useEffect(() => {
-    function handleScroll() {
-      if (!trackRef.current) return;
+  // useEffect(() => {
+  //   function handleScroll() {
+  //     if (!trackRef.current) return;
 
-      const scrollTop =
-        window.pageYOffset || document.documentElement.scrollTop;
+  //     const scrollTop =
+  //       window.pageYOffset || document.documentElement.scrollTop;
 
-      //Gap needs to be at least 600px
-      if (scrollTop > 9050 && scrollTop < 9650) {
-        console.log("desktop");
-        setScrollCount(scrollCount + 3);
-      }
-      //Gap Needs to be at least 300px
-      else if (scrollTop > 7000 && scrollTop < 7600) {
-        console.log("laptop");
-        setScrollCount(scrollCount + 1.8);
-      } else {
-        setScrollCount(0);
-      }
+  //     //Gap needs to be at least 600px
+  //     if (scrollTop > 9050 && scrollTop < 9650) {
+  //       console.log("desktop");
+  //       setScrollCount(scrollCount + 3);
+  //     }
+  //     //Gap Needs to be at least 300px
+  //     else if (scrollTop > 7000 && scrollTop < 7600) {
+  //       console.log("laptop");
+  //       setScrollCount(scrollCount + 1.8);
+  //     } else {
+  //       setScrollCount(0);
+  //     }
 
-      // trackRef.current.style.transform = `translate(${-(
-      //   scrollCount * 4
-      // )}%, -50%)`;
+  //     // trackRef.current.style.transform = `translate(${-(
+  //     //   scrollCount * 4
+  //     // )}%, -50%)`;
 
-      for (const image of trackRef.current.getElementsByClassName("image")) {
-        image.animate(
-          {
-            objectPosition: `${100 + -(scrollCount * 7)}% center`,
-          },
-          { duration: 1200, fill: "forwards" }
-        );
-      }
-    }
-    window.addEventListener("scroll", handleScroll);
+  //     for (const image of trackRef.current.getElementsByClassName("image")) {
+  //       image.animate(
+  //         {
+  //           objectPosition: `${100 + -(scrollCount * 7)}% center`,
+  //         },
+  //         { duration: 1200, fill: "forwards" }
+  //       );
+  //     }
+  //   }
+  //   window.addEventListener("scroll", handleScroll);
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [scrollCount]);
+  //   return () => {
+  //     window.removeEventListener("scroll", handleScroll);
+  //   };
+  // }, [scrollCount]);
 
-  const circleRef = useRef(null);
+  // const circleRef = useRef(null);
 
-  useEffect(() => {
-    const circle = circleRef.current;
-    const text = circle.dataset.text;
-    const characters = text.split("");
-    const deltaAngle = 360 / characters.length;
-    const distanceFromCenter = 256;
+  // useEffect(() => {
+  //   const circle = circleRef.current;
+  //   const text = circle.dataset.text;
+  //   const characters = text.split("");
+  //   const deltaAngle = 360 / characters.length;
+  //   const distanceFromCenter = 256;
 
-    characters.forEach((character, index) => {
-      const span = document.createElement("span");
-      span.innerText = character;
-      const rotateY = `rotateY(${index * deltaAngle}deg)`;
-      const translateZ = `translateZ(${distanceFromCenter}px)`;
-      span.style.transform = `${rotateY} ${translateZ}`;
+  //   characters.forEach((character, index) => {
+  //     const span = document.createElement("span");
+  //     span.innerText = character;
+  //     const rotateY = `rotateY(${index * deltaAngle}deg)`;
+  //     const translateZ = `translateZ(${distanceFromCenter}px)`;
+  //     span.style.transform = `${rotateY} ${translateZ}`;
 
-      circle.appendChild(span);
-    });
-  }, []);
+  //     circle.appendChild(span);
+  //   });
+  // }, []);
 
-  function openSpy() {
-    window.open("http://spyproject.netlify.com/", "_blank");
-  }
-  function openNews() {
-    window.open("https://news-project-junyoung.vercel.app/", "_blank");
-  }
-  function openAI() {
-    window.open("https://santaai.vercel.app/", "_blank");
-  }
+  // function openSpy() {
+  //   window.open("http://spyproject.netlify.com/", "_blank");
+  // }
+  // function openNews() {
+  //   window.open("https://news-project-junyoung.vercel.app/", "_blank");
+  // }
+  // function openAI() {
+  //   window.open("https://santaai.vercel.app/", "_blank");
+  // }
+
+  // --------------------------Enable Above Code Only--------------------------
   // const handleMouseClick = (e) => {
   //   //Creating a function that saves the mouse position when clicked
   //   trackRef.current.setAttribute("data-mouse-down-at", e.clientX.toString());
@@ -134,7 +136,7 @@ const Projects = () => {
 
   return (
     <div className="flex flex-col">
-      <div
+      {/* <div
         className="image-track content-end"
         ref={trackRef}
         data-mouse-down-at="0"
@@ -162,12 +164,12 @@ const Projects = () => {
           draggable="false"
           onClick={() => openAI()}
         />
-      </div>
-      <div
+      </div> */}
+      {/* <div
         className="projectDesc md:text-8xl font-black text-4xl text-[#80b0ce] "
         ref={circleRef}
         data-text="2023 PROJECTS"
-      ></div>
+      ></div> */}
     </div>
   );
 };
