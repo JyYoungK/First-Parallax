@@ -1,3 +1,3 @@
-# Junyoung Kang's Portfolio
+# Junyoung Kang's Parallax Practice
 
 Made using React/Tailwind
